@@ -3,370 +3,426 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Somay Vaidh: business and data analyst in retail, quick commerce and fintech. Results, case studies and contact.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one reading column. Contact first, then a KPI ledger, then case files written as Problem / Approach / Outcome. */
+/* Layout: clean light professional page. Sticky nav, hero with a to-scale perfume chart, results grid, filterable case files, timeline. */
 :root{
-  --bg:#f3f5f4; --surface:#ffffff; --fg:#14211d; --muted:#56675f; --line:#d6dedb;
-  --accent:#0f7a5c; --accent-soft:#dcefe8; --hot:#b4410c;
-  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
-  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+  --bg:#f7f8fa; --card:#ffffff; --card-solid:#ffffff;
+  --line:#e4e7ec; --line2:#d0d5dd;
+  --fg:#101828; --muted:#475467; --dim:#667085;
+  --mint:#1d4ed8; --cyan:#1d4ed8; --amber:#b54708; --soft:#eef3ff;
+  --display:"Plus Jakarta Sans","Segoe UI",system-ui,sans-serif;
+  --body:"Source Sans 3","Segoe UI",system-ui,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0e1513; --surface:#151f1c; --fg:#e4ece9; --muted:#97a9a2; --line:#26332f;
-  --accent:#4fd1a5; --accent-soft:#16302a; --hot:#fb923c; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0e1513; --surface:#151f1c; --fg:#e4ece9; --muted:#97a9a2; --line:#26332f;
-  --accent:#4fd1a5; --accent-soft:#16302a; --hot:#fb923c; color-scheme:dark}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);
+html{scroll-behavior:smooth;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.65 var(--body);overflow-x:hidden;
   padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
-.wrap{max-width:900px;margin:0 auto;padding-block:40px 72px;display:flex;flex-direction:column;gap:64px}
-a{color:var(--accent);text-underline-offset:3px}
-a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
-h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.12}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top, 0px);z-index:60;background:var(--bg)}
+.panel,.tile,.case,.job{box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.grid-bg{position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%)}
+a{color:var(--mint);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:2px solid var(--mint);outline-offset:3px;border-radius:6px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.08;text-wrap:balance}
 p{margin:0}
-.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-section{display:flex;flex-direction:column;gap:20px;scroll-margin-top:24px}
-h2{font-size:clamp(26px,4vw,34px);font-weight:700}
-.btn{font:600 14px/1 var(--body);padding:11px 15px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto}
+.mono{font-family:var(--mono)}
+.grad{color:var(--mint)}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top, 0px);z-index:50;margin:14px auto 0;max-width:1120px;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px 10px 18px;
+  border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 1px 2px rgba(16,24,40,.05)}
+.brand{font:700 15px var(--display);color:var(--fg);display:flex;align-items:center;gap:10px}
+.brand i{width:9px;height:9px;border-radius:50%;background:#12b76a}
+.links{display:flex;gap:4px}
+.links a{color:var(--muted);font:500 14px var(--body);padding:7px 11px;border-radius:8px}
+.links a:hover{color:var(--fg);background:var(--card);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 14px/1 var(--body);padding:11px 16px;border-radius:10px;border:1px solid var(--line2);background:var(--card);color:var(--fg);cursor:pointer;transition:transform .15s,border-color .15s,background .15s}
+.btn:hover{border-color:var(--mint);text-decoration:none}
+.btn.primary{background:var(--mint);border-color:var(--mint);color:#fff}
+@media (max-width:760px){.links{display:none}}
 
 /* hero */
-.hero{display:flex;flex-direction:column;gap:18px}
-.hero h1{font-size:clamp(44px,9vw,84px);font-weight:800;letter-spacing:-.025em}
-.role-line{font:600 clamp(17px,2.4vw,21px)/1.35 var(--body)}
-.role-line span{color:var(--accent)}
-.contactbar{display:flex;flex-wrap:wrap;gap:8px 18px;font:500 14px/1.4 var(--mono);color:var(--fg);padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
-.contactbar span,.contactbar a{white-space:nowrap}
-.contactbar .sep{color:var(--line)}
-.status{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font:500 13px/1 var(--mono);padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
-.chip.on{border-color:var(--accent);color:var(--accent)}
-.chip.on::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px}
-.actions{display:flex;flex-wrap:wrap;gap:10px}
-.toast{font:500 13px var(--mono);color:var(--accent);min-height:1.2em}
+.hero{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;align-items:center;padding-block:72px 40px}
+.pill{display:inline-flex;align-items:center;gap:8px;font:600 13.5px var(--body);color:#067647;padding:6px 12px;border:1px solid #abefc6;border-radius:999px;background:#ecfdf3;width:fit-content}
+.pill i{width:7px;height:7px;border-radius:50%;background:#12b76a}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(62,230,168,.6)}50%{box-shadow:0 0 0 6px rgba(62,230,168,0)}}
+.hero h1{font-size:clamp(42px,7vw,72px);font-weight:800;letter-spacing:-.03em;margin-top:18px}
+.hero .sub{font:600 clamp(18px,2.4vw,24px)/1.35 var(--display);color:var(--fg);margin-top:14px}
+.hero .sub .rot{display:inline-block;min-width:10ch}
+.hero .lede{color:var(--muted);font-size:17px;max-width:54ch;margin-top:16px}
+.contact{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.contact .c{font:500 13.5px var(--mono);padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg);display:inline-flex;gap:8px;align-items:center;cursor:pointer}
+.contact .c span{color:var(--dim)}
+.contact a.c:hover{text-decoration:none;border-color:var(--line2)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.toast{font:500 13px var(--mono);color:var(--mint);min-height:1.3em;margin-top:10px}
+
+/* hero chart card */
+.chart{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:20px;box-shadow:0 12px 32px -12px rgba(16,24,40,.12)}
+.chart .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.chart .k{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.chart .v{font:800 40px/1 var(--display);margin-top:8px}
+.chart .v small{font:600 15px var(--body);color:#067647;margin-left:8px;white-space:nowrap;display:inline-block}
+.chart .tag{font:500 11px var(--mono);padding:5px 8px;border-radius:6px;background:var(--soft);color:var(--mint);white-space:nowrap}
+.chart svg{width:100%;height:auto;margin-top:12px;display:block}
+.chart .ft{display:flex;justify-content:space-between;gap:10px;font:400 12px var(--mono);color:var(--dim);margin-top:6px;flex-wrap:wrap}
+.mini{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.mini div{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--card)}
+.mini b{display:block;font:700 20px var(--display)}
+.mini span{font:500 11px var(--mono);color:var(--muted)}
+
+/* logos strip */
+.strip{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;padding:18px 0 8px;border-top:1px solid var(--line);color:var(--dim);font:600 15px var(--display)}
+.strip .k{font:500 11px var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.strip span.co{color:var(--fg)}
+
+section{padding-block:72px 0;scroll-margin-top:90px}
+.sh{display:flex;flex-direction:column;gap:10px;margin-bottom:28px}
+.eyebrow{font:600 12.5px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--mint)}
+.sh h2{font-size:clamp(30px,4.6vw,48px);font-weight:700;letter-spacing:-.025em}
+.sh p{color:var(--muted);max-width:62ch}
 
 /* about */
-.about{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
-.about .text{display:flex;flex-direction:column;gap:14px;font-size:17px;max-width:62ch;min-width:0}
-.fit{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;min-width:0}
-.fit h3{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.fit ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:15px}
-.fit li::marker{color:var(--accent)}
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:20px}
+.panel{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:26px;min-width:0}
+.about .panel p+p{margin-top:14px}
+.about .panel p{color:var(--muted);font-size:16.5px}
+.roles{display:flex;flex-direction:column;gap:8px}
+.roles h3{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.roles div{display:flex;align-items:center;gap:10px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#f9fafb;font-weight:600;font-size:15.5px}
+.roles div::before{content:"→";color:var(--mint);font-family:var(--mono)}
 
-/* ledger */
-.ledger{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow-x:auto}
-.ledger table{width:100%;border-collapse:collapse;min-width:560px}
-.ledger th,.ledger td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-.ledger tr:last-child td{border-bottom:0}
-.ledger th{font:500 11px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--accent-soft)}
-.ledger td.num{font:500 15px/1.4 var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
-.ledger td.num b{color:var(--accent);font-weight:500}
-.ledger .from{color:var(--muted)}
-.ledger .where{font-size:13px;color:var(--muted)}
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.tile{grid-column:span 2;border:1px solid var(--line);border-radius:18px;background:var(--card);padding:22px;display:flex;flex-direction:column;gap:8px;min-width:0;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.tile:hover{border-color:var(--line2)}
+.tile.wide{grid-column:span 3}
+.tile .n{font:800 clamp(30px,4vw,44px)/1 var(--display);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.tile .n .from{color:var(--dim);font-weight:600;font-size:.6em}
+.tile .l{font-weight:700}
+.tile .d{color:var(--muted);font-size:14.5px}
+.tile .w{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:auto;padding-top:8px}
 
-/* case files */
-.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-.case{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;min-width:0;align-self:start}
-.case .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
-.case .org{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.case .res{font:500 13px/1 var(--mono);color:var(--accent);padding:5px 8px;border-radius:6px;background:var(--accent-soft);white-space:nowrap}
-.case h3{font-size:20px;font-weight:700;padding-right:28px}
+/* cases */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filters button{font:600 13.5px var(--body);padding:8px 14px;border-radius:999px;border:1px solid var(--line2);background:transparent;color:var(--muted);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--fg);color:#fff;border-color:var(--fg)}
+.filters .sp{flex:1}
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.case{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:20px 22px;min-width:0;transition:border-color .2s,background .2s}
+.case:hover{border-color:var(--line2)}
+.case[open]{border-color:#b2c6f5;box-shadow:0 8px 24px -14px rgba(29,78,216,.35)}
 .case summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;gap:10px;position:relative}
 .case summary::-webkit-details-marker{display:none}
-.case .tog{position:absolute;right:0;bottom:2px;width:22px;height:22px;border:1px solid var(--line);border-radius:6px}
-.case .tog::before{content:"+";position:absolute;inset:0;display:grid;place-items:center;font:500 15px/1 var(--mono);color:var(--accent)}
-.case[open] .tog::before{content:"−"}
-.case .cbody{display:flex;flex-direction:column;gap:12px;padding-top:12px}
-.case summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px}
-.casectl{display:flex;gap:10px;flex-wrap:wrap}
-.case dl{margin:0;display:grid;grid-template-columns:84px 1fr;gap:8px 12px;font-size:14.5px}
-.case dt{font:500 11px/1.9 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
-.case dd{margin:0;min-width:0}
-.case .tools{font:400 12.5px/1.5 var(--mono);color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+.case .top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;padding-right:34px}
+.case .org{font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.case .res{font:500 12.5px var(--mono);color:var(--mint);padding:5px 9px;border-radius:7px;background:var(--soft);white-space:nowrap}
+.case h3{font-size:20px;font-weight:700;letter-spacing:-.01em;padding-right:34px}
+.case .tog{position:absolute;right:0;top:0;width:26px;height:26px;border:1px solid var(--line2);border-radius:8px;transition:transform .2s}
+.case .tog::before{content:"+";position:absolute;inset:0;display:grid;place-items:center;font:500 16px/1 var(--mono);color:var(--mint)}
+.case[open] .tog{transform:rotate(45deg)}
+.case .cbody{display:flex;flex-direction:column;gap:14px;padding-top:16px;margin-top:14px;border-top:1px solid var(--line)}
+.case dl{margin:0;display:grid;grid-template-columns:86px 1fr;gap:10px 14px;font-size:15px}
+.case dt{font:600 11px/1.9 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--mint)}
+.case dd{margin:0;color:var(--muted);min-width:0}
+.case .tools{display:flex;flex-wrap:wrap;gap:6px;font:500 12px var(--mono);color:var(--muted)}
+.case .tools span{padding:4px 8px;border:1px solid var(--line);border-radius:6px}
+.note{font:400 13px var(--mono);color:var(--dim)}
 
-/* roles */
-.role{display:grid;grid-template-columns:190px 1fr;gap:8px 28px;padding-top:22px;border-top:1px solid var(--line)}
-.role:first-of-type{border-top:0;padding-top:0}
-.role .meta{display:flex;flex-direction:column;gap:4px}
-.role .co{font:700 18px/1.2 var(--display)}
-.role .when{font:400 13px/1.3 var(--mono);color:var(--muted)}
-.role .title{font-size:14px;color:var(--muted)}
-.role .ctx{font-size:13px;color:var(--muted);font-style:italic}
-.role ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
-.role li::marker{color:var(--accent)}
-.tag{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hot);margin-top:4px}
+/* timeline */
+.tl{position:relative;display:flex;flex-direction:column;gap:14px;padding-left:28px}
+.tl::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--line2)}
+.job{position:relative;border:1px solid var(--line);border-radius:16px;background:var(--card);padding:20px 22px;display:grid;grid-template-columns:220px 1fr;gap:10px 26px}
+.job::before{content:"";position:absolute;left:-27px;top:24px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--mint)}
+.job .co{font:700 19px var(--display)}
+.job .t{font-weight:600;font-size:14.5px;color:var(--muted);margin-top:4px}
+.job .when{font:500 12.5px var(--mono);color:var(--muted);margin-top:6px}
+.job .x{font-size:13px;color:var(--dim);margin-top:4px}
+.job .intern{display:inline-block;margin-top:8px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--amber);border:1px solid #fedf89;border-radius:6px;padding:3px 7px;width:fit-content}
+.job ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:var(--muted);font-size:15px;min-width:0}
+.job li::marker{color:var(--mint)}
 
 /* skills */
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.skills h3{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.skills p{font-size:15px}
-.kpis{font:400 13px/1.8 var(--mono);color:var(--muted)}
-.kpis span{display:inline-block;padding:2px 8px;margin:0 6px 6px 0;border:1px solid var(--line);border-radius:6px;color:var(--fg);background:var(--surface)}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.skills h3{font:500 12px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chips span{font:600 14px var(--body);padding:6px 11px;border-radius:8px;border:1px solid var(--line);background:#f9fafb}
+.kpi-row{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:500 12.5px var(--mono);color:var(--muted)}
+.kpi-row span{padding:5px 9px;border-radius:7px;background:var(--soft);color:var(--mint)}
 
-.list{display:flex;flex-direction:column;gap:14px}
-.item{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.item > div{min-width:0;flex:1 1 320px}
-.item .yr{font:400 13px/1.6 var(--mono);color:var(--muted)}
-.item p{margin-top:2px;font-size:15px;color:var(--muted)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.list{display:flex;flex-direction:column;gap:16px}
+.list .it b{font-weight:700}
+.list .it p{color:var(--muted);font-size:14.5px;margin-top:2px}
+.list .it .yr{font:500 12px var(--mono);color:var(--dim)}
 
-.closing{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:14px}
-footer{font:400 12px var(--mono);color:var(--muted)}
-.note{font-size:13px;color:var(--muted)}
+.final{margin-top:72px;border:1px solid var(--line);border-radius:20px;padding:clamp(26px,5vw,48px);background:var(--soft);display:flex;flex-direction:column;gap:16px}
+.final h2{font-size:clamp(30px,5vw,52px);letter-spacing:-.03em}
+.final p{color:var(--muted);max-width:56ch}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-block:28px 40px;font:400 12.5px var(--mono);color:var(--dim)}
 
-@media (max-width:720px){.about{grid-template-columns:1fr}.cases{grid-template-columns:1fr}.role{grid-template-columns:1fr}.case dl{grid-template-columns:1fr;gap:2px}.case dd{margin-bottom:6px}}
-@media (prefers-reduced-motion:no-preference){.hero > *{animation:rise .45s ease both}.hero > *:nth-child(2){animation-delay:.04s}.hero > *:nth-child(3){animation-delay:.08s}.hero > *:nth-child(4){animation-delay:.12s}
-@keyframes rise{from{transform:translateY(8px)}to{transform:none}}}
+@media (max-width:900px){.hero{grid-template-columns:1fr;padding-top:48px}.about{grid-template-columns:1fr}.tile,.tile.wide{grid-column:span 3}.skills{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+@media (max-width:640px){.tile,.tile.wide{grid-column:span 6}.cases{grid-template-columns:1fr}.job{grid-template-columns:1fr}.case dl{grid-template-columns:1fr;gap:2px}.case dd{margin-bottom:8px}.mini{grid-template-columns:1fr 1fr 1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
 </style>
 </head><body>
 
-<div class="wrap">
+
+
+<nav aria-label="Main">
+  <a class="brand" href="#top"><i></i>Somay Vaidh</a>
+  <div class="links"><a href="#about">About</a><a href="#results">Results</a><a href="#cases">Case studies</a><a href="#experience">Experience</a><a href="#skills">Skills</a></div>
+  <span style="display:flex;gap:8px"><a class="btn" href="Somay_Vaidh_Resume.pdf" download>Resume</a><a class="btn primary" href="#contact">Hire me</a></span>
+</nav>
+
+<main class="wrap" id="top">
 
 <header class="hero">
-  <h1>Somay Vaidh</h1>
-  <p class="role-line">Business &amp; Data Analyst <span>·</span> Retail, Category &amp; Product Analytics</p>
-  <div class="contactbar">
-    <span id="ph">+91 98674 18956</span><span class="sep">|</span>
-    <span id="em">somayvaidh08@gmail.com</span><span class="sep">|</span>
-    <a href="https://www.linkedin.com/in/somay-vaidh-33b58b203/" target="_blank" rel="noopener">LinkedIn</a><span class="sep">|</span>
-    <a href="https://github.com/somayvaidh" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span>
-    <span>Mumbai, India</span>
+  <div>
+    <span class="pill"><i></i>Available to join immediately · open to relocation</span>
+    <h1>Somay Vaidh</h1>
+    <p class="sub">Business &amp; Data Analyst for <span class="rot grad" id="rot">retail</span></p>
+    <p class="lede">I find out why a number moved, then help the business act on it. Two years across omnichannel retail, quick commerce and fintech: 80+ stores, a category launch on ONDC, and apps shipped from my specs.</p>
+    <div class="contact">
+      <button class="c" type="button" data-copy="+91 98674 18956"><span>tel</span>+91 98674 18956</button>
+      <button class="c" type="button" data-copy="somayvaidh08@gmail.com"><span>mail</span>somayvaidh08@gmail.com</button>
+      <a class="c" href="https://www.linkedin.com/in/somay-vaidh-33b58b203/" target="_blank" rel="noopener"><span>in</span>LinkedIn ↗</a>
+      <a class="c" href="https://github.com/somayvaidh" target="_blank" rel="noopener"><span>gh</span>GitHub ↗</a>
+    </div>
+    <div class="cta">
+      <a class="btn primary" href="#cases">View case studies</a>
+      <a class="btn" href="Somay_Vaidh_Resume.pdf" download>Download resume (PDF)</a>
+      <a class="btn" href="https://www.linkedin.com/in/somay-vaidh-33b58b203/" target="_blank" rel="noopener">Message on LinkedIn</a>
+    </div>
+    <div class="toast" id="toast" aria-live="polite"></div>
   </div>
-  <div class="status">
-    <span class="chip on">Available to join immediately</span>
-    <span class="chip">Open to relocation</span>
-  </div>
-  <div class="actions">
-    <button class="btn primary" id="cpEm" type="button">Copy email</button>
-    <button class="btn" id="cpPh" type="button">Copy phone</button>
-    <a class="btn" href="#cases">See case studies</a>
-  </div>
-  <div class="toast" id="toast" aria-live="polite"></div>
+
+  <aside class="chart" aria-label="Perfume share of store sales, from 1.5% to about 3%">
+    <div class="hd">
+      <div><div class="k">Perfume · share of store sales</div><div class="v">~3%<small>2× from 1.5%</small></div></div>
+      <span class="tag">The Souled Store</span>
+    </div>
+    <svg viewBox="0 0 320 150" role="img" aria-hidden="true">
+      <defs><linearGradient id="ar" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1d4ed8" stop-opacity=".14"/><stop offset="1" stop-color="#1d4ed8" stop-opacity="0"/></linearGradient>
+      <linearGradient id="ln" x1="0" x2="1"><stop offset="0" stop-color="#1d4ed8"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs>
+      <!-- y scale: 0% at y=130, 3.5% at y=10 (34.3px per 1%) -->
+      <g stroke="#e4e7ec" stroke-width="1"><line x1="34" x2="312" y1="130" y2="130"/><line x1="34" x2="312" y1="95.7" y2="95.7"/><line x1="34" x2="312" y1="61.4" y2="61.4"/><line x1="34" x2="312" y1="27.1" y2="27.1"/></g>
+      <g fill="#667085" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="end"><text x="28" y="133">0%</text><text x="28" y="98.7">1%</text><text x="28" y="64.4">2%</text><text x="28" y="30.1">3%</text></g>
+      <path d="M40 78.6 L310 31.9 L310 130 L40 130 Z" fill="url(#ar)"/>
+      <path d="M40 78.6 L310 31.9" stroke="url(#ln)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="40" cy="78.6" r="4.5" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
+      <circle cx="310" cy="31.9" r="5.5" fill="#1d4ed8"/>
+      <g font-family="JetBrains Mono, monospace" font-size="10"><text x="46" y="96" fill="#475467">1.5%</text><text x="302" y="22" fill="#1d4ed8" text-anchor="end">~3%</text></g>
+    </svg>
+    <div class="ft"><span>Before</span><span>After store-level targeting</span></div>
+    <div class="mini">
+      <div><b>80+</b><span>stores</span></div>
+      <div><b>+20%</b><span>repeat orders</span></div>
+      <div><b>20h</b><span>saved / week</span></div>
+    </div>
+  </aside>
 </header>
 
-<section id="about" aria-labelledby="about-h">
-  <div class="eyebrow">About</div>
-  <h2 id="about-h">I find out why a number moved, then help the business act on it.</h2>
+<div class="strip"><span class="k">Worked with</span><span class="co">The Souled Store</span><span class="co">Ola</span><span class="co">Snapwork</span><span class="co">Deutsche Bank</span><span class="co">Digii</span></div>
+
+<section id="about">
+  <div class="sh"><span class="eyebrow">About</span><h2>Analysis that ends in a decision.</h2></div>
   <div class="about">
-    <div class="text">
+    <div class="panel">
       <p>I'm a business analyst with about two years of full-time experience across omnichannel retail, quick commerce and fintech.</p>
-      <p>At The Souled Store I was the analyst for Retail Operations across 80+ stores in 40+ cities. I set store targets, ran performance reviews, worked through the store P&amp;L, and built the analyses that leadership used to decide where to push a category or fix a store.</p>
+      <p>At The Souled Store I was the analyst for Retail Operations across 80+ stores in 40+ cities. I set store targets, ran performance reviews, worked through the store P&amp;L, and built the analyses leadership used to decide where to push a category or fix a store.</p>
       <p>Before that I launched a category on ONDC and built customer segmentation at Ola, and worked as a client-facing business analyst at Snapwork, turning an insurance client's needs into specs for two health apps and an HR portal.</p>
       <p>I automate the repetitive parts of my work with SQL and Python, so more of my time goes into the question behind the dashboard.</p>
     </div>
-    <aside class="fit">
+    <div class="panel roles">
       <h3>Roles I'm looking for</h3>
-      <ul>
-        <li>Business Analyst / Senior Business Analyst</li>
-        <li>Data Analyst (retail, e-commerce, fintech)</li>
-        <li>Product Analyst / Associate Product Manager</li>
-        <li>Category, pricing &amp; commercial analytics</li>
-        <li>Strategy &amp; business operations analyst</li>
-        <li>Analytics consulting (analyst level)</li>
-      </ul>
-    </aside>
+      <div>Business Analyst / Senior BA</div>
+      <div>Data Analyst · retail, e-commerce, fintech</div>
+      <div>Product Analyst / Associate PM</div>
+      <div>Category, pricing &amp; commercial analytics</div>
+      <div>Strategy &amp; business operations</div>
+      <div>Analytics consulting</div>
+    </div>
   </div>
 </section>
 
-<section aria-labelledby="results">
-  <div class="eyebrow">Results</div>
-  <h2 id="results">Numbers I can point to</h2>
-  <div class="ledger">
-    <table>
-      <thead><tr><th>Metric</th><th>Result</th><th>What I did</th></tr></thead>
-      <tbody>
-        <tr><td>Perfume share of store sales</td><td class="num"><span class="from">1.5%</span> → <b>~3%</b></td><td>Customer and store deep-dive turned into store-level targets. <div class="where">The Souled Store</div></td></tr>
-        <tr><td>Repeat orders</td><td class="num"><b>+20%</b></td><td>RFM segmentation across Food &amp; Grocery driving targeted interventions. <div class="where">Ola</div></td></tr>
-        <tr><td>Manual reporting time</td><td class="num"><b>20+ hrs</b> saved/week</td><td>15+ scheduled SQL/Python reports and alerts; weekly reporting became daily. <div class="where">The Souled Store</div></td></tr>
-        <tr><td>Monthly store target setting</td><td class="num"><span class="from">3–4 days</span> → <b>1 run</b></td><td>Automated target phasing feeding a Looker Studio target dashboard. <div class="where">The Souled Store</div></td></tr>
-        <tr><td>At-risk stores flagged per cycle</td><td class="num"><b>10–12</b> of 20–25</td><td>Store anomaly report built from audit, stock, returns and billing signals. <div class="where">The Souled Store</div></td></tr>
-        <tr><td>Display use at one store</td><td class="num"><span class="from">100%</span> → <b>43%</b></td><td>Showed a conversion drop came from fixture damage, not demand. <div class="where">The Souled Store</div></td></tr>
-      </tbody>
-    </table>
+<section id="results">
+  <div class="sh"><span class="eyebrow">Results</span><h2>Numbers I can point to.</h2></div>
+  <div class="bento">
+    <div class="tile wide"><div class="n"><span class="from">1.5% → </span><span class="grad">~3%</span></div><div class="l">Perfume share of store sales</div><div class="d">Customer and store deep-dive turned into store-level targets.</div><div class="w">The Souled Store</div></div>
+    <div class="tile wide"><div class="n grad">+20%</div><div class="l">Repeat orders</div><div class="d">RFM segmentation across Food &amp; Grocery driving targeted interventions.</div><div class="w">Ola</div></div>
+    <div class="tile"><div class="n">20+ hrs</div><div class="l">Saved every week</div><div class="d">15+ scheduled SQL and Python reports and alerts.</div><div class="w">The Souled Store</div></div>
+    <div class="tile"><div class="n"><span class="from">3–4 days → </span>1 run</div><div class="l">Monthly target setting</div><div class="d">Automated phasing into daily, state-wise targets.</div><div class="w">The Souled Store</div></div>
+    <div class="tile"><div class="n">10–12</div><div class="l">Red-flag stores per cycle</div><div class="d">Looker Studio anomaly dashboard across 20–25 at-risk stores.</div><div class="w">The Souled Store</div></div>
   </div>
 </section>
 
-<section id="cases" aria-labelledby="cases-h">
-  <div class="eyebrow">Case studies</div>
-  <h2 id="cases-h">How the work was done</h2>
-  <p class="note">Click a case to open or close it. Company data stays private: these describe the problem, method and outcome only.</p>
-  <div class="casectl"><button class="btn" type="button" id="openAll">Expand all</button><button class="btn" type="button" id="closeAll">Collapse all</button></div>
-  <div class="cases">
-
-    <details class="case" open><summary><div class="top"><span class="org">The Souled Store · Category</span><span class="res">1.5% → ~3%</span></div><h3>Growing a new category in stores</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+<section id="cases">
+  <div class="sh"><span class="eyebrow">Case studies</span><h2>How the work was done.</h2><p>Problem, approach and outcome for each. Click a card to open it. Company data stays private: no internal figures beyond the results above.</p></div>
+  <div class="filters" role="toolbar" aria-label="Filter case studies">
+    <button type="button" data-f="all" aria-pressed="true">All</button>
+    <button type="button" data-f="tss" aria-pressed="false">The Souled Store</button>
+    <button type="button" data-f="ola" aria-pressed="false">Ola</button>
+    <button type="button" data-f="snap" aria-pressed="false">Snapwork</button>
+    <span class="sp"></span>
+    <button type="button" id="openAll">Expand all</button>
+    <button type="button" id="closeAll">Collapse all</button>
+  </div>
+  <div class="cases" id="caseGrid">
+    <details class="case" open data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Category</span><span class="res">1.5% → ~3%</span></div><h3>Growing a new category in stores</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Perfume was a small share of store sales, and nobody knew whether the gap was the product, the customer or the store.</dd>
         <dt>Approach</dt><dd>Cohort retention over 24 months, split by channel; a SKU migration matrix; cannibalisation between two hero fragrances; cross-category retention; and a Good / Mid / Bad store segmentation by monthly sales share. Compared in-stock days with stock-out days per store to test whether perfume was driving extra sales or just substituting for other purchases.</dd>
         <dt>Outcome</dt><dd>Set a target of one perfume per staff member per day, which lifted perfumes sold per day (PDS) and with it the category's overall contribution. Ran monthly perfume training sessions for store staff and flagged under-performing stores for follow-up. Category share of sales rose from 1.5% to about 3%. Presented to founders and CXOs.</dd>
       </dl>
-      <div class="tools">BigQuery · SQL · Python · Google Sheets</div></div></details>
-
-    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Planning</span><span class="res">3–4 days → 1 run</span></div><h3>Store targets that phase themselves</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+      <div class="tools"><span>BigQuery</span><span>SQL</span><span>Python</span><span>Google Sheets</span></div></div></details>
+    <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Planning</span><span class="res">3–4 days → 1 run</span></div><h3>Store targets that phase themselves</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Monthly store targets were split into daily targets by hand, which took 3–4 days every month and was easy to get wrong.</dd>
-        <dt>Approach</dt><dd>Built a model that phases each store's monthly target into daily targets by state, weighting weekdays, weekends, public holidays and retail events. The output feeds a Looker Studio dashboard where stores track daily achievement against target.</dd>
-        <dt>Outcome</dt><dd>A repeatable monthly run instead of days of manual work, and one shared view of targets for stores and Retail Ops.</dd>
+        <dt>Approach</dt><dd>Built a model that phases each store's monthly target into daily targets by state, weighting weekdays, weekends, public holidays and retail events, and writes the final store target file automatically.</dd>
+        <dt>Outcome</dt><dd>A repeatable monthly run instead of 3–4 days of manual work, with consistent targets for every store.</dd>
       </dl>
-      <div class="tools">Python · Google Sheets · Looker Studio</div></div></details>
-
-    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Evaluation</span><span class="res">2 pilots · 5 vendors</span></div><h3>Should we buy AI store-monitoring tools?</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+      <div class="tools"><span>Python</span><span>Excel</span><span>Google Sheets</span></div></div></details>
+    <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Store health</span><span class="res">10–12 red flags / cycle</span></div><h3>Catching problem stores early</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>Store issues such as stock gaps, poor audits or unusual returns were spotted late, one report at a time, and repeat offenders were hard to see.</dd>
+        <dt>Approach</dt><dd>Built an alert system that reads replenishment, internal audit, mystery audit, perfume, returns and high-value-bill trackers, flags stores with repeated breakdowns across areas (not one-off slips), and emails Retail Ops a weekly prioritised exception list. Paired it with a Looker Studio trend dashboard, filterable by area manager and refreshed daily.</dd>
+        <dt>Outcome</dt><dd>Each cycle it tracks 20–25 at-risk stores and flags 10–12 in red, giving Retail Ops one list of stores to act on.</dd>
+      </dl>
+      <div class="tools"><span>BigQuery</span><span>SQL</span><span>Looker Studio</span></div></div></details>
+    <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Evaluation</span><span class="res">2 pilots · 5 vendors</span></div><h3>Should we buy AI store-monitoring tools?</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>The founders were deciding whether to roll out AI store monitoring (video and microphone based) and which retail-tech vendor to use.</dd>
         <dt>Approach</dt><dd>Reviewed a 3-store AI video-analytics pilot across 8 use cases (unattended customers, queue time, staff presence, shelf and hygiene monitoring), measuring alerts, false alerts and accuracy per store. Ran a separate 3-store pilot of Storefox's microphone-based system, scoring staff conversations against a 24-point SOP rubric for the floor and billing counter. Compared retail-audit platforms Outmarch, Amply and Tactiqs side by side.</dd>
         <dt>Outcome</dt><dd>A recommendation deck for the founders, grounded in measured pilot accuracy rather than vendor claims.</dd>
       </dl>
-      <div class="tools">Excel · PowerPoint</div></div></details>
-
-    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Risk</span><span class="res">CXO framework</span></div><h3>Spotting returns abuse in stores</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+      <div class="tools"><span>Excel</span><span>PowerPoint</span></div></div></details>
+    <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Risk</span><span class="res">CXO framework</span></div><h3>Spotting returns abuse in stores</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Leadership suspected some customers were abusing in-store returns, but there was no consistent way to tell abuse from normal returns.</dd>
         <dt>Approach</dt><dd>Built user-level and order-level views of offline returns, then a flagging waterfall: low activity, high returner (50%+ return rate with 4+ items), watch list, and volume returner. Added cross-store return tracking, where items are bought in one store and returned in another.</dd>
         <dt>Outcome</dt><dd>A framework presented to the CXO team. Flagged customers were routed to Customer Experience for call-backs.</dd>
       </dl>
-      <div class="tools">BigQuery · SQL · Excel</div></div></details>
-
-    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Diagnosis</span><span class="res">100% → 43%</span></div><h3>Was it demand, or the store?</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+      <div class="tools"><span>BigQuery</span><span>SQL</span><span>Excel</span></div></div></details>
+    <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Diagnosis</span><span class="res">100% → 43%</span></div><h3>Was it demand, or the store?</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>A franchise store's conversion fell sharply after an incident, and the question was whether customers had stopped coming or stopped buying.</dd>
         <dt>Approach</dt><dd>Compared footfall like-for-like against last year, then checked conversion, stock and fixture use section by section.</dd>
         <dt>Outcome</dt><dd>Footfall held up, but display use had fallen from 100% to 43% because of fixture damage. The fix was the fixtures, not marketing or staffing.</dd>
       </dl>
-      <div class="tools">SQL · footfall camera data · Excel</div></div></details>
-
-    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Operations</span><span class="res">80+ stores</span></div><h3>Automating the mystery-shopper audit</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+      <div class="tools"><span>SQL</span><span>footfall camera data</span><span>Excel</span></div></div></details>
+    <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Operations</span><span class="res">80+ stores</span></div><h3>Automating the mystery-shopper audit</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Each monthly mystery-shopper round had to be downloaded, reformatted and pasted into a scoring workbook by hand, and the vendor's format kept changing.</dd>
         <dt>Approach</dt><dd>Pulled each round straight from the audit vendor's API and mapped it to a fixed 23-question scorecard (first impression, assistance, trial room, cross-selling, checkout), reconciling questions the vendor had split or reworded.</dd>
         <dt>Outcome</dt><dd>One command per round, with store scorecards that always show the last three rounds.</dd>
       </dl>
-      <div class="tools">Python · REST API · Excel</div></div></details>
-
-    <details class="case"><summary><div class="top"><span class="org">Ola · Growth</span><span class="res">+20% repeat</span></div><h3>Bringing customers back across categories</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+      <div class="tools"><span>Python</span><span>REST API</span><span>Excel</span></div></div></details>
+    <details class="case" data-co="ola"><summary><div class="top"><span class="org">Ola · Growth</span><span class="res">+20% repeat</span></div><h3>Bringing customers back across categories</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Food and Grocery needed to know which customers were worth re-engaging and how.</dd>
         <dt>Approach</dt><dd>Cohorts and a cross-category RFM segmentation (lifetime orders, AOV, frequency, recency) that split users into champions, at-risk and dormant. Added a reactivation analysis by last-order cohort to size win-back campaigns.</dd>
         <dt>Outcome</dt><dd>Targeted UX and marketing interventions lifted repeat orders by 20%.</dd>
       </dl>
-      <div class="tools">SQL (Hive, Presto) · Python</div></div></details>
-
-    <details class="case"><summary><div class="top"><span class="org">Ola · Launch &amp; network</span><span class="res">ONDC launch</span></div><h3>A new category and a dark-store network</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+      <div class="tools"><span>SQL (Hive, Presto)</span><span>Python</span></div></div></details>
+    <details class="case" data-co="ola"><summary><div class="top"><span class="org">Ola · Launch &amp; network</span><span class="res">ONDC launch</span></div><h3>A new category and a dark-store network</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Ola was launching Gift Cards on ONDC and needed dark-store locations for Ola Grocery.</dd>
         <dt>Approach</dt><dd>I was the primary point of contact for the Gift Cards launch, working with Directors on the launch strategy. For grocery, I mapped order density, delivery feasibility and demand geospatially to pick sites.</dd>
         <dt>Outcome</dt><dd>Category launched on ONDC, plus location recommendations for the dark-store network.</dd>
       </dl>
-      <div class="tools">Python · GeoPandas · Folium · SQL</div></div></details>
-
-    <details class="case"><summary><div class="top"><span class="org">Snapwork · Insurance client</span><span class="res">2 apps + portal</span></div><h3>From client needs to shipped health apps</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+      <div class="tools"><span>Python</span><span>GeoPandas</span><span>Folium</span><span>SQL</span></div></div></details>
+    <details class="case" data-co="snap"><summary><div class="top"><span class="org">Snapwork · Insurance client</span><span class="res">2 apps + portal</span></div><h3>From client needs to shipped health apps</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>An insurance client needed two customer health apps (MediCard and MedGo) and a corporate HR portal built by an outsourced tech team.</dd>
         <dt>Approach</dt><dd>As lead business analyst, I ran journey-design sessions with the client and our design team, wrote the functional specifications engineering built from, and handled scope and priority questions during delivery.</dd>
         <dt>Outcome</dt><dd>Delivered from requirements to launch, with product KPI dashboards (MAU, funnel drop-off, digital vs offline usage, claim turnaround). I also designed the data model for a personal finance manager.</dd>
       </dl>
-      <div class="tools">FSDs · user journeys · KPI dashboards</div></div></details>
-
-    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Automation</span><span class="res">15+ pipelines</span></div><h3>An automation layer for store reporting</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+      <div class="tools"><span>FSDs</span><span>user journeys</span><span>KPI dashboards</span></div></div></details>
+    <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Automation</span><span class="res">15+ pipelines</span></div><h3>An automation layer for store reporting</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Store teams waited on manual reports for stock, shrinkage, footfall and weekly KPIs.</dd>
         <dt>Approach</dt><dd>Scheduled Python pipelines from the sales and stock databases and the footfall API to Google Sheets and email: per-store stock several times a day, shrinkage ageing alerts, weeks of cover, weekly sell-through, hourly footfall and high-value bills.</dd>
         <dt>Outcome</dt><dd>Saved 20+ hours a week and moved reporting from weekly to daily.</dd>
       </dl>
-      <div class="tools">Python · MySQL · BigQuery · Sheets API · Task Scheduler</div></div></details>
-
+      <div class="tools"><span>Python</span><span>MySQL</span><span>BigQuery</span><span>Sheets API</span><span>Task Scheduler</span></div></div></details>
   </div>
 </section>
 
-<section aria-labelledby="work">
-  <div class="eyebrow">Experience</div>
-  <h2 id="work">Where I've worked</h2>
-
-  <div class="role">
-    <div class="meta"><span class="co">The Souled Store</span><span class="when">May – Oct 2026</span><span class="title">Senior Associate Data Analyst, Business Analytics (Retail)</span><span class="ctx">Omnichannel apparel retail</span></div>
-    <ul>
-      <li>Analyst for Retail Operations across 80+ company-owned and franchise stores: monthly targets, performance reviews and store diagnostics.</li>
-      <li>Updated the Finance-owned Store MIS / P&amp;L and Revenue Dashboard, and analysed margins, rent and salary costs to find where to cut costs and grow sales.</li>
-      <li>Ran the fortnightly franchise business review and presented the monthly Retail Champions awards to the store network.</li>
-      <li>Category, returns, audit and automation work described in the case studies above.</li>
-    </ul>
-  </div>
-
-  <div class="role">
-    <div class="meta"><span class="co">Snapwork Technologies</span><span class="when">Jun 2025 – May 2026</span><span class="title">Business Analyst, Product</span><span class="ctx">Fintech services firm, Bajaj Finserv-invested</span></div>
-    <ul>
-      <li>Lead BA for an insurance client: MediCard &amp; MedGo health apps and a corporate HR portal, from requirements to launch.</li>
-      <li>Journey-design sessions with the client and design team; functional specifications for engineering.</li>
-      <li>Product KPIs and dashboards; data model for a personal finance manager.</li>
-    </ul>
-  </div>
-
-  <div class="role">
-    <div class="meta"><span class="co">Ola</span><span class="when">Nov 2024 – Apr 2025</span><span class="title">Program Manager &amp; Business Analyst</span><span class="ctx">Ride-hailing &amp; quick commerce</span></div>
-    <ul>
-      <li>RFM segmentation across Food &amp; Grocery that lifted repeat orders by 20%.</li>
-      <li>Primary point of contact for the Gift Cards launch on ONDC; dark-store location planning for Ola Grocery.</li>
-      <li>KPI dashboards on Hive/Presto used by leadership; built an AI agent for the CEO's office that summarises weekly updates across the organisation.</li>
-    </ul>
-  </div>
-
-  <div class="role">
-    <div class="meta"><span class="co">Deutsche Bank</span><span class="when">Jul – Sep 2024</span><span class="title">Data Analyst</span><span class="tag">Internship</span></div>
-    <ul><li>Credit-risk patterns and transaction anomalies in SQL and Python; forecasting models; automated Tableau reporting for risk and finance teams.</li></ul>
-  </div>
-
-  <div class="role">
-    <div class="meta"><span class="co">Digii (CollPoll)</span><span class="when">Jan – Jun 2024</span><span class="title">Product Specialist</span><span class="tag">Internship</span></div>
-    <ul><li>Onboarded university clients; automated question-paper generation in the exam module.</li></ul>
+<section id="experience">
+  <div class="sh"><span class="eyebrow">Experience</span><h2>Where I've worked.</h2></div>
+  <div class="tl">
+    <div class="job"><div><div class="co">The Souled Store</div><div class="t">Senior Associate Data Analyst, Business Analytics (Retail)</div><div class="when">May – Oct 2026</div><div class="x">Omnichannel apparel retail</div></div>
+      <ul><li>Analyst for Retail Operations across 80+ company-owned and franchise stores: monthly targets, performance reviews and store diagnostics.</li><li>Updated the Finance-owned Store MIS / P&amp;L and Revenue Dashboard; analysed margins, rent and salary costs to find where to cut costs and grow sales.</li><li>Ran the fortnightly franchise business review; presented the monthly Retail Champions awards.</li></ul></div>
+    <div class="job"><div><div class="co">Snapwork Technologies</div><div class="t">Business Analyst, Product</div><div class="when">Jun 2025 – May 2026</div><div class="x">Fintech services · Bajaj Finserv-invested</div></div>
+      <ul><li>Lead BA for an insurance client: MediCard &amp; MedGo health apps and a corporate HR portal, requirements to launch.</li><li>Journey-design sessions with client and design team; functional specifications for engineering.</li><li>Product KPIs and dashboards; data model for a personal finance manager.</li></ul></div>
+    <div class="job"><div><div class="co">Ola</div><div class="t">Program Manager &amp; Business Analyst</div><div class="when">Nov 2024 – Apr 2025</div><div class="x">Ride-hailing &amp; quick commerce</div></div>
+      <ul><li>RFM segmentation across Food &amp; Grocery that lifted repeat orders by 20%.</li><li>Primary point of contact for the Gift Cards launch on ONDC; dark-store location planning for Ola Grocery.</li><li>Leadership KPI dashboards; an AI agent for the CEO's office summarising weekly updates.</li></ul></div>
+    <div class="job"><div><div class="co">Deutsche Bank</div><div class="t">Data Analyst</div><div class="when">Jul – Sep 2024</div><span class="intern">Internship</span></div>
+      <ul><li>Credit-risk patterns and transaction anomalies in SQL and Python; forecasting models; automated Tableau reporting.</li></ul></div>
+    <div class="job"><div><div class="co">Digii (CollPoll)</div><div class="t">Product Specialist</div><div class="when">Jan – Jun 2024</div><span class="intern">Internship</span></div>
+      <ul><li>Onboarded university clients; automated question-paper generation in the exam module.</li></ul></div>
   </div>
 </section>
 
-<section aria-labelledby="skills">
-  <div class="eyebrow">Toolkit</div>
-  <h2 id="skills">Skills</h2>
+<section id="skills">
+  <div class="sh"><span class="eyebrow">Toolkit</span><h2>Skills.</h2></div>
   <div class="skills">
-    <div><h3>Data</h3><p>SQL (MySQL, BigQuery, Hive, Presto), Python (pandas, scikit-learn), Advanced Excel, Google Sheets</p></div>
-    <div><h3>BI &amp; automation</h3><p>Looker Studio, Power BI, Tableau, scheduled Python pipelines, Google Sheets &amp; Drive APIs, REST APIs</p></div>
-    <div><h3>Business &amp; product</h3><p>Cohort &amp; RFM analysis, LFL/YoY, P&amp;L, forecasting, target setting, root-cause analysis, requirements &amp; FSDs, user journeys</p></div>
+    <div class="panel"><h3>Data</h3><div class="chips"><span>SQL</span><span>BigQuery</span><span>MySQL</span><span>Hive / Presto</span><span>Python</span><span>pandas</span><span>Advanced Excel</span><span>Google Sheets</span></div></div>
+    <div class="panel"><h3>BI &amp; automation</h3><div class="chips"><span>Looker Studio</span><span>Power BI</span><span>Tableau</span><span>Python pipelines</span><span>Sheets &amp; Drive APIs</span><span>REST APIs</span></div></div>
+    <div class="panel"><h3>Business &amp; product</h3><div class="chips"><span>Cohort &amp; RFM</span><span>LFL / YoY</span><span>P&amp;L</span><span>Forecasting</span><span>Target setting</span><span>Root-cause analysis</span><span>FSDs</span><span>User journeys</span></div></div>
   </div>
-  <div class="kpis">Retail metrics I work in daily: <span>Conversion</span><span>AOV</span><span>UPT</span><span>ASP</span><span>Sell-through</span><span>Revenue / footfall</span><span>LFL</span><span>Weeks of cover</span><span>Shrinkage</span></div>
+  <div class="kpi-row">Retail metrics I work in daily: <span>Conversion</span><span>AOV</span><span>UPT</span><span>ASP</span><span>Sell-through</span><span>Rev / footfall</span><span>LFL</span><span>Weeks of cover</span><span>Shrinkage</span></div>
 </section>
 
-<section aria-labelledby="proj">
-  <div class="eyebrow">Side projects</div>
-  <h2 id="proj">Projects</h2>
-  <div class="list">
-    <div class="item"><div><a href="https://github.com/somayvaidh/AI-Powered-Investment-Advisor-Chatbot" target="_blank" rel="noopener"><b>AI Investment Advisor Chatbot</b></a><p>Stock recommendations from news sentiment (FinBERT) and live fundamentals, with a FAISS news index.</p></div></div>
-    <div class="item"><div><a href="https://github.com/somayvaidh/Stock-Trading-AI-FINRL" target="_blank" rel="noopener"><b>RL Stock Trading Agent</b></a><p>A2C portfolio agent backtested against mean-variance optimisation and the Dow Jones.</p></div></div>
-    <div class="item"><div><b>Real-time Violence Detection</b><p>Edge-optimised vision model that sends GPS-tagged alerts through a Telegram bot.</p></div></div>
-  </div>
-</section>
-
-<section aria-labelledby="edu">
-  <div class="eyebrow">Education</div>
-  <h2 id="edu">Education &amp; certifications</h2>
-  <div class="list">
-    <div class="item"><div><b>B.Tech, Computer Science &amp; Engineering</b><p>Vellore Institute of Technology · CGPA 7.18</p></div><span class="yr">2020 – 2024</span></div>
-    <div class="item"><div><b>CFA Level 1 Candidate</b><p>CFA Institute</p></div><span class="yr">2026 –</span></div>
-    <div class="item"><div><b>Certifications</b><p>Microsoft Azure AI Fundamentals · McKinsey.org Forward Program · Financial Markets (Yale) · Supervised ML (DeepLearning.AI / Stanford)</p></div></div>
+<section>
+  <div class="two">
+    <div class="panel"><div class="sh" style="margin-bottom:16px"><span class="eyebrow">Side projects</span></div>
+      <div class="list">
+        <div class="it"><b>Vibe Finder</b> <span class="yr">· in progress</span><p>A platform where hosts publish social plans and solo trips (run clubs, weekend activities, group trips) and people discover and join them. Host dashboards, per-plan guest requirements and admin roles. Built with Lovable and GitHub; pilot with small trip organisers next.</p></div>
+        <div class="it"><a href="https://github.com/somayvaidh/AI-Powered-Investment-Advisor-Chatbot" target="_blank" rel="noopener"><b>AI Investment Advisor Chatbot ↗</b></a><p>Stock recommendations from news sentiment (FinBERT) and live fundamentals.</p></div>
+        <div class="it"><a href="https://github.com/somayvaidh/Stock-Trading-AI-FINRL" target="_blank" rel="noopener"><b>RL Stock Trading Agent ↗</b></a><p>A2C portfolio agent backtested against mean-variance optimisation and the Dow Jones.</p></div>
+        <div class="it"><b>Real-time Violence Detection</b><p>Edge vision model with GPS-tagged Telegram alerts.</p></div>
+      </div></div>
+    <div class="panel"><div class="sh" style="margin-bottom:16px"><span class="eyebrow">Education</span></div>
+      <div class="list">
+        <div class="it"><b>B.Tech, Computer Science &amp; Engineering</b><p>Vellore Institute of Technology · CGPA 7.18</p><span class="yr">2020 – 2024</span></div>
+        <div class="it"><b>CFA Level 1 Candidate</b><p>CFA Institute</p></div>
+        <div class="it"><b>Certifications</b><p>Microsoft Azure AI Fundamentals · McKinsey.org Forward Program · Financial Markets (Yale) · Supervised ML (Stanford / DeepLearning.AI)</p></div>
+      </div></div>
   </div>
 </section>
 
-<section aria-labelledby="ct">
-  <div class="closing">
-    <h2 id="ct">Hiring an analyst?</h2>
-    <p>I can start right away and I'm open to any city. The quickest way to reach me is email or LinkedIn.</p>
-    <div class="actions">
-      <a class="btn primary" href="https://www.linkedin.com/in/somay-vaidh-33b58b203/" target="_blank" rel="noopener">Message on LinkedIn</a>
-      <a class="btn" href="mailto:somayvaidh08@gmail.com">Email me</a>
-    </div>
-    <p class="note">somayvaidh08@gmail.com · +91 98674 18956</p>
+<div class="final" id="contact">
+  <span class="eyebrow">Contact</span>
+  <h2>Hiring an analyst? <span class="grad">I can start now.</span></h2>
+  <p>Open to any city. Email or LinkedIn reaches me fastest.</p>
+  <div class="contact">
+    <button class="c" type="button" data-copy="somayvaidh08@gmail.com"><span>mail</span>somayvaidh08@gmail.com</button>
+    <button class="c" type="button" data-copy="+91 98674 18956"><span>tel</span>+91 98674 18956</button>
   </div>
-</section>
-
-<footer>© 2026 Somay Vaidh · Mumbai</footer>
+  <div class="cta"><a class="btn primary" href="https://www.linkedin.com/in/somay-vaidh-33b58b203/" target="_blank" rel="noopener">Message on LinkedIn ↗</a><a class="btn" href="mailto:somayvaidh08@gmail.com">Email me</a><a class="btn" href="Somay_Vaidh_Resume.pdf" download>Download resume (PDF)</a></div>
+  <div class="toast" id="toast2" aria-live="polite"></div>
 </div>
 
+<footer><span>© 2026 Somay Vaidh · Mumbai</span><span>somayvaidh.vercel.app</span></footer>
+</main>
+
 <script>
-function cp(id){
-  const el=document.getElementById(id), t=document.getElementById('toast'), v=el.textContent.trim();
-  const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);t.textContent='Selected. Press Ctrl/Cmd + C to copy.';};
-  try{navigator.clipboard.writeText(v).then(()=>{t.textContent='Copied: '+v;},sel);}catch(e){sel();}
-}
-document.getElementById('cpEm').addEventListener('click',()=>cp('em'));
-document.getElementById('openAll').addEventListener('click',()=>document.querySelectorAll('details.case').forEach(d=>d.open=true));
-document.getElementById('closeAll').addEventListener('click',()=>document.querySelectorAll('details.case').forEach(d=>d.open=false));
-document.getElementById('cpPh').addEventListener('click',()=>cp('ph'));
+(function(){
+  // copy buttons
+  document.querySelectorAll('[data-copy]').forEach(b=>b.addEventListener('click',()=>{
+    const v=b.dataset.copy, t=b.closest('.final')?document.getElementById('toast2'):document.getElementById('toast');
+    const fb=()=>{t.textContent=v+'  (select and copy)';};
+    try{navigator.clipboard.writeText(v).then(()=>{t.textContent='Copied '+v;},fb);}catch(e){fb();}
+  }));
+  // rotating word
+  const words=['retail','quick commerce','fintech','category growth','product teams'], el=document.getElementById('rot');
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){let i=0;setInterval(()=>{i=(i+1)%words.length;el.style.opacity=0;setTimeout(()=>{el.textContent=words[i];el.style.opacity=1;},200);},2400);el.style.transition='opacity .2s';}
+  // filters
+  const fbtns=document.querySelectorAll('.filters [data-f]');
+  fbtns.forEach(b=>b.addEventListener('click',()=>{
+    fbtns.forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
+    document.querySelectorAll('#caseGrid .case').forEach(c=>{c.hidden=!(b.dataset.f==='all'||c.dataset.co===b.dataset.f);});
+  }));
+  document.getElementById('openAll').addEventListener('click',()=>document.querySelectorAll('#caseGrid .case:not([hidden])').forEach(d=>d.open=true));
+  document.getElementById('closeAll').addEventListener('click',()=>document.querySelectorAll('#caseGrid .case').forEach(d=>d.open=false));
+})();
 </script>
 </body></html>
