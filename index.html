@@ -218,6 +218,24 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
 .dstep p{color:var(--muted);font-size:14.5px}
 @media (max-width:900px){.day{grid-template-columns:1fr 1fr}}
 @media (max-width:520px){.day{grid-template-columns:1fr}}
+.dstep{position:relative;overflow:hidden}
+.dstep .dicon{width:46px;height:46px;display:block;margin-bottom:4px}
+.dstep .dicon svg{width:100%;height:100%;display:block}
+.dstep.coffee{background:linear-gradient(160deg,#f6ece2,#fbf7f2);border-color:#e8d5c2}
+.dstep.coffee .dt{background:#3b2416;color:#f6ece2}
+.dstep.search{background:linear-gradient(160deg,#fff1e6,#fffaf5);border-color:#fbd5b5}
+.dstep.search .dt{background:#c2410c;color:#fff}
+.dstep.talk{background:linear-gradient(160deg,#e7f8ee,#f6fdf9);border-color:#b7e8cb}
+.dstep.talk .dt{background:#067647;color:#fff}
+.dstep.gear{background:linear-gradient(160deg,#eaedff,#f7f8ff);border-color:#c7cdfb}
+.dstep.gear .dt{background:#3538cd;color:#fff}
+.dstep p{color:#475467}
+.tile:nth-child(1){background:linear-gradient(160deg,#eef3ff,#fff)}
+.tile:nth-child(2){background:linear-gradient(160deg,#e9f9f0,#fff)}
+.tile:nth-child(3){background:linear-gradient(160deg,#fff4ea,#fff)}
+.tile:nth-child(4){background:linear-gradient(160deg,#f3efff,#fff)}
+.tile:nth-child(5){background:linear-gradient(160deg,#fdf0f3,#fff)}
+.acard:nth-child(6n+1) .ak{color:#c2410c}.acard:nth-child(6n+2) .ak{color:#067647}.acard:nth-child(6n+3) .ak{color:#3538cd}.acard:nth-child(6n+4) .ak{color:#b54708}.acard:nth-child(6n+5) .ak{color:#c11574}
 </style>
 </head><body>
 
@@ -288,10 +306,10 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
 <section id="day">
   <div class="sh"><span class="eyebrow">A typical day</span><h2>Black coffee, then the numbers.</h2></div>
   <div class="day">
-    <div class="dstep"><span class="dt">10:30 AM</span><b>Black coffee, yesterday's sales</b><p>First question of the day: which store dipped, and was it footfall, conversion or basket size?</p></div>
-    <div class="dstep"><span class="dt">12:30 PM</span><b>Chase the why</b><p>Stock-outs, a broken fixture, a staffing gap. The cause is usually on the floor, not in the dashboard.</p></div>
-    <div class="dstep"><span class="dt">4:00 PM</span><b>Talk to the people who fix it</b><p>A call with an area manager beats another chart. Agree the fix and who owns it.</p></div>
-    <div class="dstep"><span class="dt">8:00 PM →</span><b>Automate what hurt this morning</b><p>Most evenings run till 9 or 10. Whatever I checked by hand today becomes a scheduled report by Friday.</p></div>
+    <div class="dstep coffee"><span class="dicon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M17 8c0 3-3 3-3 6s3 3 3 6M24 8c0 3-3 3-3 6s3 3 3 6M31 8c0 3-3 3-3 6s3 3 3 6" stroke="#8a5a36" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".6"/><path d="M9 24h28v6a12 12 0 0 1-12 12h-4A12 12 0 0 1 9 30z" fill="#3b2416"/><path d="M37 26h2.5a5 5 0 0 1 0 10H36" stroke="#3b2416" stroke-width="3.2" fill="none"/><ellipse cx="23" cy="24.5" rx="13" ry="2.4" fill="#1d120b"/></svg></span><span class="dt">10:30 AM</span><b>Black coffee, yesterday's sales</b><p>First question of the day: which store dipped, and was it footfall, conversion or basket size?</p></div>
+    <div class="dstep search"><span class="dicon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="21" cy="21" r="11" fill="#fff" stroke="#c2410c" stroke-width="4"/><path d="M29.5 29.5 40 40" stroke="#c2410c" stroke-width="5" stroke-linecap="round"/><path d="M15 24l4-5 3 3 5-6" stroke="#c2410c" stroke-width="2.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="dt">12:30 PM</span><b>Chase the why</b><p>Stock-outs, a broken fixture, a staffing gap. The cause is usually on the floor, not in the dashboard.</p></div>
+    <div class="dstep talk"><span class="dicon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M7 10h24a4 4 0 0 1 4 4v11a4 4 0 0 1-4 4H17l-7 6v-6H7a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4z" fill="#067647"/><path d="M38 18h3a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4h-2v5l-6-5H22a4 4 0 0 1-4-4v-1" fill="none" stroke="#067647" stroke-width="2.6"/><circle cx="12" cy="19.5" r="2" fill="#fff"/><circle cx="19" cy="19.5" r="2" fill="#fff"/><circle cx="26" cy="19.5" r="2" fill="#fff"/></svg></span><span class="dt">4:00 PM</span><b>Talk to the people who fix it</b><p>A call with an area manager beats another chart. Agree the fix and who owns it.</p></div>
+    <div class="dstep gear"><span class="dicon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6l3 5 6-1 1 6 5 3-3 5 3 5-5 3-1 6-6-1-3 5-3-5-6 1-1-6-5-3 3-5-3-5 5-3 1-6 6 1z" fill="#3538cd"/><circle cx="24" cy="24" r="6.5" fill="#eef4ff"/><path d="M38 40a5 5 0 1 1 6-6" stroke="#3538cd" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg></span><span class="dt">8:00 PM →</span><b>Automate what hurt this morning</b><p>Most evenings run till 9 or 10. Whatever I checked by hand today becomes a scheduled report by Friday.</p></div>
   </div>
 </section>
 
