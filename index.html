@@ -1,0 +1,372 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Somay Vaidh</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Somay Vaidh: business and data analyst in retail, quick commerce and fintech. Results, case studies and contact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column. Contact first, then a KPI ledger, then case files written as Problem / Approach / Outcome. */
+:root{
+  --bg:#f3f5f4; --surface:#ffffff; --fg:#14211d; --muted:#56675f; --line:#d6dedb;
+  --accent:#0f7a5c; --accent-soft:#dcefe8; --hot:#b4410c;
+  --display:"Bricolage Grotesque","Segoe UI",system-ui,sans-serif;
+  --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1513; --surface:#151f1c; --fg:#e4ece9; --muted:#97a9a2; --line:#26332f;
+  --accent:#4fd1a5; --accent-soft:#16302a; --hot:#fb923c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1513; --surface:#151f1c; --fg:#e4ece9; --muted:#97a9a2; --line:#26332f;
+  --accent:#4fd1a5; --accent-soft:#16302a; --hot:#fb923c; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);
+  padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px))}
+.wrap{max-width:900px;margin:0 auto;padding-block:40px 72px;display:flex;flex-direction:column;gap:64px}
+a{color:var(--accent);text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.12}
+p{margin:0}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+section{display:flex;flex-direction:column;gap:20px;scroll-margin-top:24px}
+h2{font-size:clamp(26px,4vw,34px);font-weight:700}
+.btn{font:600 14px/1 var(--body);padding:11px 15px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--fg);text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:18px}
+.hero h1{font-size:clamp(44px,9vw,84px);font-weight:800;letter-spacing:-.025em}
+.role-line{font:600 clamp(17px,2.4vw,21px)/1.35 var(--body)}
+.role-line span{color:var(--accent)}
+.contactbar{display:flex;flex-wrap:wrap;gap:8px 18px;font:500 14px/1.4 var(--mono);color:var(--fg);padding:14px 16px;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+.contactbar span,.contactbar a{white-space:nowrap}
+.contactbar .sep{color:var(--line)}
+.status{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:500 13px/1 var(--mono);padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.chip.on{border-color:var(--accent);color:var(--accent)}
+.chip.on::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--accent);margin-right:8px;vertical-align:1px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.toast{font:500 13px var(--mono);color:var(--accent);min-height:1.2em}
+
+/* about */
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:28px;align-items:start}
+.about .text{display:flex;flex-direction:column;gap:14px;font-size:17px;max-width:62ch;min-width:0}
+.fit{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px 20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.fit h3{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fit ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.fit li::marker{color:var(--accent)}
+
+/* ledger */
+.ledger{border:1px solid var(--line);border-radius:12px;background:var(--surface);overflow-x:auto}
+.ledger table{width:100%;border-collapse:collapse;min-width:560px}
+.ledger th,.ledger td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.ledger tr:last-child td{border-bottom:0}
+.ledger th{font:500 11px/1.2 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:var(--accent-soft)}
+.ledger td.num{font:500 15px/1.4 var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.ledger td.num b{color:var(--accent);font-weight:500}
+.ledger .from{color:var(--muted)}
+.ledger .where{font-size:13px;color:var(--muted)}
+
+/* case files */
+.cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.case{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px;min-width:0;align-self:start}
+.case .top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
+.case .org{font:500 11px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.case .res{font:500 13px/1 var(--mono);color:var(--accent);padding:5px 8px;border-radius:6px;background:var(--accent-soft);white-space:nowrap}
+.case h3{font-size:20px;font-weight:700;padding-right:28px}
+.case summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;gap:10px;position:relative}
+.case summary::-webkit-details-marker{display:none}
+.case .tog{position:absolute;right:0;bottom:2px;width:22px;height:22px;border:1px solid var(--line);border-radius:6px}
+.case .tog::before{content:"+";position:absolute;inset:0;display:grid;place-items:center;font:500 15px/1 var(--mono);color:var(--accent)}
+.case[open] .tog::before{content:"−"}
+.case .cbody{display:flex;flex-direction:column;gap:12px;padding-top:12px}
+.case summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:6px}
+.casectl{display:flex;gap:10px;flex-wrap:wrap}
+.case dl{margin:0;display:grid;grid-template-columns:84px 1fr;gap:8px 12px;font-size:14.5px}
+.case dt{font:500 11px/1.9 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.case dd{margin:0;min-width:0}
+.case .tools{font:400 12.5px/1.5 var(--mono);color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
+
+/* roles */
+.role{display:grid;grid-template-columns:190px 1fr;gap:8px 28px;padding-top:22px;border-top:1px solid var(--line)}
+.role:first-of-type{border-top:0;padding-top:0}
+.role .meta{display:flex;flex-direction:column;gap:4px}
+.role .co{font:700 18px/1.2 var(--display)}
+.role .when{font:400 13px/1.3 var(--mono);color:var(--muted)}
+.role .title{font-size:14px;color:var(--muted)}
+.role .ctx{font-size:13px;color:var(--muted);font-style:italic}
+.role ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.role li::marker{color:var(--accent)}
+.tag{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;color:var(--hot);margin-top:4px}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.skills h3{font:500 12px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.skills p{font-size:15px}
+.kpis{font:400 13px/1.8 var(--mono);color:var(--muted)}
+.kpis span{display:inline-block;padding:2px 8px;margin:0 6px 6px 0;border:1px solid var(--line);border-radius:6px;color:var(--fg);background:var(--surface)}
+
+.list{display:flex;flex-direction:column;gap:14px}
+.item{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.item > div{min-width:0;flex:1 1 320px}
+.item .yr{font:400 13px/1.6 var(--mono);color:var(--muted)}
+.item p{margin-top:2px;font-size:15px;color:var(--muted)}
+
+.closing{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;gap:14px}
+footer{font:400 12px var(--mono);color:var(--muted)}
+.note{font-size:13px;color:var(--muted)}
+
+@media (max-width:720px){.about{grid-template-columns:1fr}.cases{grid-template-columns:1fr}.role{grid-template-columns:1fr}.case dl{grid-template-columns:1fr;gap:2px}.case dd{margin-bottom:6px}}
+@media (prefers-reduced-motion:no-preference){.hero > *{animation:rise .45s ease both}.hero > *:nth-child(2){animation-delay:.04s}.hero > *:nth-child(3){animation-delay:.08s}.hero > *:nth-child(4){animation-delay:.12s}
+@keyframes rise{from{transform:translateY(8px)}to{transform:none}}}
+</style>
+</head><body>
+
+<div class="wrap">
+
+<header class="hero">
+  <h1>Somay Vaidh</h1>
+  <p class="role-line">Business &amp; Data Analyst <span>·</span> Retail, Category &amp; Product Analytics</p>
+  <div class="contactbar">
+    <span id="ph">+91 98674 18956</span><span class="sep">|</span>
+    <span id="em">somayvaidh08@gmail.com</span><span class="sep">|</span>
+    <a href="https://www.linkedin.com/in/somay-vaidh-33b58b203/" target="_blank" rel="noopener">LinkedIn</a><span class="sep">|</span>
+    <a href="https://github.com/somayvaidh" target="_blank" rel="noopener">GitHub</a><span class="sep">|</span>
+    <span>Mumbai, India</span>
+  </div>
+  <div class="status">
+    <span class="chip on">Available to join immediately</span>
+    <span class="chip">Open to relocation</span>
+  </div>
+  <div class="actions">
+    <button class="btn primary" id="cpEm" type="button">Copy email</button>
+    <button class="btn" id="cpPh" type="button">Copy phone</button>
+    <a class="btn" href="#cases">See case studies</a>
+  </div>
+  <div class="toast" id="toast" aria-live="polite"></div>
+</header>
+
+<section id="about" aria-labelledby="about-h">
+  <div class="eyebrow">About</div>
+  <h2 id="about-h">I find out why a number moved, then help the business act on it.</h2>
+  <div class="about">
+    <div class="text">
+      <p>I'm a business analyst with about two years of full-time experience across omnichannel retail, quick commerce and fintech.</p>
+      <p>At The Souled Store I was the analyst for Retail Operations across 80+ stores in 40+ cities. I set store targets, ran performance reviews, worked through the store P&amp;L, and built the analyses that leadership used to decide where to push a category or fix a store.</p>
+      <p>Before that I launched a category on ONDC and built customer segmentation at Ola, and worked as a client-facing business analyst at Snapwork, turning an insurance client's needs into specs for two health apps and an HR portal.</p>
+      <p>I automate the repetitive parts of my work with SQL and Python, so more of my time goes into the question behind the dashboard.</p>
+    </div>
+    <aside class="fit">
+      <h3>Roles I'm looking for</h3>
+      <ul>
+        <li>Business Analyst / Senior Business Analyst</li>
+        <li>Data Analyst (retail, e-commerce, fintech)</li>
+        <li>Product Analyst / Associate Product Manager</li>
+        <li>Category, pricing &amp; commercial analytics</li>
+        <li>Strategy &amp; business operations analyst</li>
+        <li>Analytics consulting (analyst level)</li>
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<section aria-labelledby="results">
+  <div class="eyebrow">Results</div>
+  <h2 id="results">Numbers I can point to</h2>
+  <div class="ledger">
+    <table>
+      <thead><tr><th>Metric</th><th>Result</th><th>What I did</th></tr></thead>
+      <tbody>
+        <tr><td>Perfume share of store sales</td><td class="num"><span class="from">1.5%</span> → <b>~3%</b></td><td>Customer and store deep-dive turned into store-level targets. <div class="where">The Souled Store</div></td></tr>
+        <tr><td>Repeat orders</td><td class="num"><b>+20%</b></td><td>RFM segmentation across Food &amp; Grocery driving targeted interventions. <div class="where">Ola</div></td></tr>
+        <tr><td>Manual reporting time</td><td class="num"><b>20+ hrs</b> saved/week</td><td>15+ scheduled SQL/Python reports and alerts; weekly reporting became daily. <div class="where">The Souled Store</div></td></tr>
+        <tr><td>Monthly store target setting</td><td class="num"><span class="from">3–4 days</span> → <b>1 run</b></td><td>Automated target phasing feeding a Looker Studio target dashboard. <div class="where">The Souled Store</div></td></tr>
+        <tr><td>At-risk stores flagged per cycle</td><td class="num"><b>10–12</b> of 20–25</td><td>Store anomaly report built from audit, stock, returns and billing signals. <div class="where">The Souled Store</div></td></tr>
+        <tr><td>Display use at one store</td><td class="num"><span class="from">100%</span> → <b>43%</b></td><td>Showed a conversion drop came from fixture damage, not demand. <div class="where">The Souled Store</div></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="cases" aria-labelledby="cases-h">
+  <div class="eyebrow">Case studies</div>
+  <h2 id="cases-h">How the work was done</h2>
+  <p class="note">Click a case to open or close it. Company data stays private: these describe the problem, method and outcome only.</p>
+  <div class="casectl"><button class="btn" type="button" id="openAll">Expand all</button><button class="btn" type="button" id="closeAll">Collapse all</button></div>
+  <div class="cases">
+
+    <details class="case" open><summary><div class="top"><span class="org">The Souled Store · Category</span><span class="res">1.5% → ~3%</span></div><h3>Growing a new category in stores</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>Perfume was a small share of store sales, and nobody knew whether the gap was the product, the customer or the store.</dd>
+        <dt>Approach</dt><dd>Cohort retention over 24 months, split by channel; a SKU migration matrix; cannibalisation between two hero fragrances; cross-category retention; and a Good / Mid / Bad store segmentation by monthly sales share. Compared in-stock days with stock-out days per store to test whether perfume was driving extra sales or just substituting for other purchases.</dd>
+        <dt>Outcome</dt><dd>Set a target of one perfume per staff member per day, which lifted perfumes sold per day (PDS) and with it the category's overall contribution. Ran monthly perfume training sessions for store staff and flagged under-performing stores for follow-up. Category share of sales rose from 1.5% to about 3%. Presented to founders and CXOs.</dd>
+      </dl>
+      <div class="tools">BigQuery · SQL · Python · Google Sheets</div></div></details>
+
+    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Planning</span><span class="res">3–4 days → 1 run</span></div><h3>Store targets that phase themselves</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>Monthly store targets were split into daily targets by hand, which took 3–4 days every month and was easy to get wrong.</dd>
+        <dt>Approach</dt><dd>Built a model that phases each store's monthly target into daily targets by state, weighting weekdays, weekends, public holidays and retail events. The output feeds a Looker Studio dashboard where stores track daily achievement against target.</dd>
+        <dt>Outcome</dt><dd>A repeatable monthly run instead of days of manual work, and one shared view of targets for stores and Retail Ops.</dd>
+      </dl>
+      <div class="tools">Python · Google Sheets · Looker Studio</div></div></details>
+
+    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Evaluation</span><span class="res">2 pilots · 5 vendors</span></div><h3>Should we buy AI store-monitoring tools?</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>The founders were deciding whether to roll out AI store monitoring (video and microphone based) and which retail-tech vendor to use.</dd>
+        <dt>Approach</dt><dd>Reviewed a 3-store AI video-analytics pilot across 8 use cases (unattended customers, queue time, staff presence, shelf and hygiene monitoring), measuring alerts, false alerts and accuracy per store. Ran a separate 3-store pilot of Storefox's microphone-based system, scoring staff conversations against a 24-point SOP rubric for the floor and billing counter. Compared retail-audit platforms Outmarch, Amply and Tactiqs side by side.</dd>
+        <dt>Outcome</dt><dd>A recommendation deck for the founders, grounded in measured pilot accuracy rather than vendor claims.</dd>
+      </dl>
+      <div class="tools">Excel · PowerPoint</div></div></details>
+
+    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Risk</span><span class="res">CXO framework</span></div><h3>Spotting returns abuse in stores</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>Leadership suspected some customers were abusing in-store returns, but there was no consistent way to tell abuse from normal returns.</dd>
+        <dt>Approach</dt><dd>Built user-level and order-level views of offline returns, then a flagging waterfall: low activity, high returner (50%+ return rate with 4+ items), watch list, and volume returner. Added cross-store return tracking, where items are bought in one store and returned in another.</dd>
+        <dt>Outcome</dt><dd>A framework presented to the CXO team. Flagged customers were routed to Customer Experience for call-backs.</dd>
+      </dl>
+      <div class="tools">BigQuery · SQL · Excel</div></div></details>
+
+    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Diagnosis</span><span class="res">100% → 43%</span></div><h3>Was it demand, or the store?</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>A franchise store's conversion fell sharply after an incident, and the question was whether customers had stopped coming or stopped buying.</dd>
+        <dt>Approach</dt><dd>Compared footfall like-for-like against last year, then checked conversion, stock and fixture use section by section.</dd>
+        <dt>Outcome</dt><dd>Footfall held up, but display use had fallen from 100% to 43% because of fixture damage. The fix was the fixtures, not marketing or staffing.</dd>
+      </dl>
+      <div class="tools">SQL · footfall camera data · Excel</div></div></details>
+
+    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Operations</span><span class="res">80+ stores</span></div><h3>Automating the mystery-shopper audit</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>Each monthly mystery-shopper round had to be downloaded, reformatted and pasted into a scoring workbook by hand, and the vendor's format kept changing.</dd>
+        <dt>Approach</dt><dd>Pulled each round straight from the audit vendor's API and mapped it to a fixed 23-question scorecard (first impression, assistance, trial room, cross-selling, checkout), reconciling questions the vendor had split or reworded.</dd>
+        <dt>Outcome</dt><dd>One command per round, with store scorecards that always show the last three rounds.</dd>
+      </dl>
+      <div class="tools">Python · REST API · Excel</div></div></details>
+
+    <details class="case"><summary><div class="top"><span class="org">Ola · Growth</span><span class="res">+20% repeat</span></div><h3>Bringing customers back across categories</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>Food and Grocery needed to know which customers were worth re-engaging and how.</dd>
+        <dt>Approach</dt><dd>Cohorts and a cross-category RFM segmentation (lifetime orders, AOV, frequency, recency) that split users into champions, at-risk and dormant. Added a reactivation analysis by last-order cohort to size win-back campaigns.</dd>
+        <dt>Outcome</dt><dd>Targeted UX and marketing interventions lifted repeat orders by 20%.</dd>
+      </dl>
+      <div class="tools">SQL (Hive, Presto) · Python</div></div></details>
+
+    <details class="case"><summary><div class="top"><span class="org">Ola · Launch &amp; network</span><span class="res">ONDC launch</span></div><h3>A new category and a dark-store network</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>Ola was launching Gift Cards on ONDC and needed dark-store locations for Ola Grocery.</dd>
+        <dt>Approach</dt><dd>I was the primary point of contact for the Gift Cards launch, working with Directors on the launch strategy. For grocery, I mapped order density, delivery feasibility and demand geospatially to pick sites.</dd>
+        <dt>Outcome</dt><dd>Category launched on ONDC, plus location recommendations for the dark-store network.</dd>
+      </dl>
+      <div class="tools">Python · GeoPandas · Folium · SQL</div></div></details>
+
+    <details class="case"><summary><div class="top"><span class="org">Snapwork · Insurance client</span><span class="res">2 apps + portal</span></div><h3>From client needs to shipped health apps</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>An insurance client needed two customer health apps (MediCard and MedGo) and a corporate HR portal built by an outsourced tech team.</dd>
+        <dt>Approach</dt><dd>As lead business analyst, I ran journey-design sessions with the client and our design team, wrote the functional specifications engineering built from, and handled scope and priority questions during delivery.</dd>
+        <dt>Outcome</dt><dd>Delivered from requirements to launch, with product KPI dashboards (MAU, funnel drop-off, digital vs offline usage, claim turnaround). I also designed the data model for a personal finance manager.</dd>
+      </dl>
+      <div class="tools">FSDs · user journeys · KPI dashboards</div></div></details>
+
+    <details class="case"><summary><div class="top"><span class="org">The Souled Store · Automation</span><span class="res">15+ pipelines</span></div><h3>An automation layer for store reporting</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
+        <dt>Problem</dt><dd>Store teams waited on manual reports for stock, shrinkage, footfall and weekly KPIs.</dd>
+        <dt>Approach</dt><dd>Scheduled Python pipelines from the sales and stock databases and the footfall API to Google Sheets and email: per-store stock several times a day, shrinkage ageing alerts, weeks of cover, weekly sell-through, hourly footfall and high-value bills.</dd>
+        <dt>Outcome</dt><dd>Saved 20+ hours a week and moved reporting from weekly to daily.</dd>
+      </dl>
+      <div class="tools">Python · MySQL · BigQuery · Sheets API · Task Scheduler</div></div></details>
+
+  </div>
+</section>
+
+<section aria-labelledby="work">
+  <div class="eyebrow">Experience</div>
+  <h2 id="work">Where I've worked</h2>
+
+  <div class="role">
+    <div class="meta"><span class="co">The Souled Store</span><span class="when">May – Oct 2026</span><span class="title">Senior Associate Data Analyst, Business Analytics (Retail)</span><span class="ctx">Omnichannel apparel retail</span></div>
+    <ul>
+      <li>Analyst for Retail Operations across 80+ company-owned and franchise stores: monthly targets, performance reviews and store diagnostics.</li>
+      <li>Updated the Finance-owned Store MIS / P&amp;L and Revenue Dashboard, and analysed margins, rent and salary costs to find where to cut costs and grow sales.</li>
+      <li>Ran the fortnightly franchise business review and presented the monthly Retail Champions awards to the store network.</li>
+      <li>Category, returns, audit and automation work described in the case studies above.</li>
+    </ul>
+  </div>
+
+  <div class="role">
+    <div class="meta"><span class="co">Snapwork Technologies</span><span class="when">Jun 2025 – May 2026</span><span class="title">Business Analyst, Product</span><span class="ctx">Fintech services firm, Bajaj Finserv-invested</span></div>
+    <ul>
+      <li>Lead BA for an insurance client: MediCard &amp; MedGo health apps and a corporate HR portal, from requirements to launch.</li>
+      <li>Journey-design sessions with the client and design team; functional specifications for engineering.</li>
+      <li>Product KPIs and dashboards; data model for a personal finance manager.</li>
+    </ul>
+  </div>
+
+  <div class="role">
+    <div class="meta"><span class="co">Ola</span><span class="when">Nov 2024 – Apr 2025</span><span class="title">Program Manager &amp; Business Analyst</span><span class="ctx">Ride-hailing &amp; quick commerce</span></div>
+    <ul>
+      <li>RFM segmentation across Food &amp; Grocery that lifted repeat orders by 20%.</li>
+      <li>Primary point of contact for the Gift Cards launch on ONDC; dark-store location planning for Ola Grocery.</li>
+      <li>KPI dashboards on Hive/Presto used by leadership; built an AI agent for the CEO's office that summarises weekly updates across the organisation.</li>
+    </ul>
+  </div>
+
+  <div class="role">
+    <div class="meta"><span class="co">Deutsche Bank</span><span class="when">Jul – Sep 2024</span><span class="title">Data Analyst</span><span class="tag">Internship</span></div>
+    <ul><li>Credit-risk patterns and transaction anomalies in SQL and Python; forecasting models; automated Tableau reporting for risk and finance teams.</li></ul>
+  </div>
+
+  <div class="role">
+    <div class="meta"><span class="co">Digii (CollPoll)</span><span class="when">Jan – Jun 2024</span><span class="title">Product Specialist</span><span class="tag">Internship</span></div>
+    <ul><li>Onboarded university clients; automated question-paper generation in the exam module.</li></ul>
+  </div>
+</section>
+
+<section aria-labelledby="skills">
+  <div class="eyebrow">Toolkit</div>
+  <h2 id="skills">Skills</h2>
+  <div class="skills">
+    <div><h3>Data</h3><p>SQL (MySQL, BigQuery, Hive, Presto), Python (pandas, scikit-learn), Advanced Excel, Google Sheets</p></div>
+    <div><h3>BI &amp; automation</h3><p>Looker Studio, Power BI, Tableau, scheduled Python pipelines, Google Sheets &amp; Drive APIs, REST APIs</p></div>
+    <div><h3>Business &amp; product</h3><p>Cohort &amp; RFM analysis, LFL/YoY, P&amp;L, forecasting, target setting, root-cause analysis, requirements &amp; FSDs, user journeys</p></div>
+  </div>
+  <div class="kpis">Retail metrics I work in daily: <span>Conversion</span><span>AOV</span><span>UPT</span><span>ASP</span><span>Sell-through</span><span>Revenue / footfall</span><span>LFL</span><span>Weeks of cover</span><span>Shrinkage</span></div>
+</section>
+
+<section aria-labelledby="proj">
+  <div class="eyebrow">Side projects</div>
+  <h2 id="proj">Projects</h2>
+  <div class="list">
+    <div class="item"><div><a href="https://github.com/somayvaidh/AI-Powered-Investment-Advisor-Chatbot" target="_blank" rel="noopener"><b>AI Investment Advisor Chatbot</b></a><p>Stock recommendations from news sentiment (FinBERT) and live fundamentals, with a FAISS news index.</p></div></div>
+    <div class="item"><div><a href="https://github.com/somayvaidh/Stock-Trading-AI-FINRL" target="_blank" rel="noopener"><b>RL Stock Trading Agent</b></a><p>A2C portfolio agent backtested against mean-variance optimisation and the Dow Jones.</p></div></div>
+    <div class="item"><div><b>Real-time Violence Detection</b><p>Edge-optimised vision model that sends GPS-tagged alerts through a Telegram bot.</p></div></div>
+  </div>
+</section>
+
+<section aria-labelledby="edu">
+  <div class="eyebrow">Education</div>
+  <h2 id="edu">Education &amp; certifications</h2>
+  <div class="list">
+    <div class="item"><div><b>B.Tech, Computer Science &amp; Engineering</b><p>Vellore Institute of Technology · CGPA 7.18</p></div><span class="yr">2020 – 2024</span></div>
+    <div class="item"><div><b>CFA Level 1 Candidate</b><p>CFA Institute</p></div><span class="yr">2026 –</span></div>
+    <div class="item"><div><b>Certifications</b><p>Microsoft Azure AI Fundamentals · McKinsey.org Forward Program · Financial Markets (Yale) · Supervised ML (DeepLearning.AI / Stanford)</p></div></div>
+  </div>
+</section>
+
+<section aria-labelledby="ct">
+  <div class="closing">
+    <h2 id="ct">Hiring an analyst?</h2>
+    <p>I can start right away and I'm open to any city. The quickest way to reach me is email or LinkedIn.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://www.linkedin.com/in/somay-vaidh-33b58b203/" target="_blank" rel="noopener">Message on LinkedIn</a>
+      <a class="btn" href="mailto:somayvaidh08@gmail.com">Email me</a>
+    </div>
+    <p class="note">somayvaidh08@gmail.com · +91 98674 18956</p>
+  </div>
+</section>
+
+<footer>© 2026 Somay Vaidh · Mumbai</footer>
+</div>
+
+<script>
+function cp(id){
+  const el=document.getElementById(id), t=document.getElementById('toast'), v=el.textContent.trim();
+  const sel=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);t.textContent='Selected. Press Ctrl/Cmd + C to copy.';};
+  try{navigator.clipboard.writeText(v).then(()=>{t.textContent='Copied: '+v;},sel);}catch(e){sel();}
+}
+document.getElementById('cpEm').addEventListener('click',()=>cp('em'));
+document.getElementById('openAll').addEventListener('click',()=>document.querySelectorAll('details.case').forEach(d=>d.open=true));
+document.getElementById('closeAll').addEventListener('click',()=>document.querySelectorAll('details.case').forEach(d=>d.open=false));
+document.getElementById('cpPh').addEventListener('click',()=>cp('ph'));
+</script>
+</body></html>
