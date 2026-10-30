@@ -171,15 +171,60 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
 @media (max-width:900px){.hero{grid-template-columns:1fr;padding-top:48px}.about{grid-template-columns:1fr}.tile,.tile.wide{grid-column:span 3}.skills{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
 @media (max-width:640px){.tile,.tile.wide{grid-column:span 6}.cases{grid-template-columns:1fr}.job{grid-template-columns:1fr}.case dl{grid-template-columns:1fr;gap:2px}.case dd{margin-bottom:8px}.mini{grid-template-columns:1fr 1fr 1fr}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+
+.hero h1{font-size:clamp(40px,6.6vw,70px)}
+.hero .sub b{font-weight:800}
+.ph{font:600 12.5px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.venture{display:grid;grid-template-columns:1.2fr 1fr;gap:24px;border:1px solid var(--line);border-radius:20px;background:var(--card);padding:clamp(20px,4vw,34px);box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.vtext{display:flex;flex-direction:column;gap:12px;min-width:0}
+.vtag{font:600 12px var(--body);letter-spacing:.1em;text-transform:uppercase;color:#b54708}
+.venture h3{font-size:clamp(26px,3.6vw,36px);font-weight:800;letter-spacing:-.02em}
+.vline{font:600 18px var(--display);color:var(--mint)}
+.vtext p{color:var(--muted)}
+.vtext ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px;color:var(--muted)}
+.vtext li::marker{color:var(--mint)}
+.vtext .tools{display:flex;flex-wrap:wrap;gap:6px;font:500 12px var(--mono);color:var(--muted)}
+.vtext .tools span{padding:4px 8px;border:1px solid var(--line);border-radius:6px}
+.vmock{background:var(--soft);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:10px;justify-content:center;min-width:0}
+.vcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center}
+.vcard .vk{grid-column:1/-1;font:500 11px var(--mono);color:var(--dim)}
+.vcard b{font:700 15px var(--display)}
+.vcard .vm{font-size:13px;color:var(--muted);grid-column:1}
+.vcard .vbtn{grid-column:2;grid-row:2/4;font:700 12.5px var(--body);color:#fff;background:var(--mint);padding:7px 10px;border-radius:8px;white-space:nowrap}
+.vnote{font:400 11px var(--mono);color:var(--dim);text-align:center}
+.ach{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.acard{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:18px 20px;display:flex;flex-direction:column;gap:6px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.acard .ak{font:600 11.5px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--mint)}
+.acard b{font:700 17px var(--display)}
+.acard p{color:var(--muted);font-size:14.5px}
+.sw{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:10px;color:var(--muted)}
+.sw b{color:var(--fg)}
+.sw li::marker{color:var(--mint)}
+.edu{margin-top:16px;padding:14px 18px;border:1px dashed var(--line2);border-radius:12px;color:var(--muted);font-size:15px}
+.edu b{color:var(--fg)}
+.faq{display:flex;flex-direction:column;gap:10px}
+.faq details{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:16px 20px}
+.faq summary{cursor:pointer;font:700 17px var(--display);list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font:500 18px var(--mono);color:var(--mint)}
+.faq details[open] summary::after{content:"−"}
+.faq p{color:var(--muted);margin-top:10px;max-width:70ch}
+@media (max-width:900px){.venture{grid-template-columns:1fr}.ach{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.ach{grid-template-columns:1fr}}
+.day{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.dstep{border:1px solid var(--line);border-radius:16px;background:var(--card);padding:18px;display:flex;flex-direction:column;gap:6px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.dstep .dt{font:500 12.5px var(--mono);color:var(--mint);background:var(--soft);padding:4px 8px;border-radius:6px;width:fit-content}
+.dstep b{font:700 16.5px var(--display)}
+.dstep p{color:var(--muted);font-size:14.5px}
+@media (max-width:900px){.day{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.day{grid-template-columns:1fr}}
 </style>
 </head><body>
 
-
-
 <nav aria-label="Main">
   <a class="brand" href="#top"><i></i>Somay Vaidh</a>
-  <div class="links"><a href="#about">About</a><a href="#results">Results</a><a href="#cases">Case studies</a><a href="#experience">Experience</a><a href="#skills">Skills</a></div>
-  <span style="display:flex;gap:8px"><a class="btn" href="Somay_Vaidh_Resume.pdf" download>Resume</a><a class="btn primary" href="#contact">Hire me</a></span>
+  <div class="links"><a href="#day">My day</a><a href="#cases">Case studies</a><a href="#beyond">Beyond work</a><a href="#superpowers">Superpowers</a><a href="#experience">Experience</a><a href="#faq">FAQ</a></div>
+  <span style="display:flex;gap:8px"><a class="btn" href="Somay_Vaidh_Resume.pdf" download>Resume</a><a class="btn primary" href="#contact">Let's talk</a></span>
 </nav>
 
 <main class="wrap" id="top">
@@ -187,8 +232,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
 <header class="hero">
   <div>
     <span class="pill"><i></i>Available to join immediately · open to relocation</span>
-    <h1>Somay Vaidh</h1>
-    <p class="sub">Business &amp; Data Analyst for <span class="rot grad" id="rot">retail</span></p>
+    <h1>Half spreadsheet,<br>half store floor.</h1>
+    <p class="sub">I'm <b>Somay Vaidh</b>, a Business &amp; Data Analyst for <span class="rot grad" id="rot">retail</span></p>
     <p class="lede">I find out why a number moved, then help the business act on it. Two years across omnichannel retail, quick commerce and fintech: 80+ stores, a category launch on ONDC, and apps shipped from my specs.</p>
     <div class="contact">
       <button class="c" type="button" data-copy="+91 98674 18956"><span>tel</span>+91 98674 18956</button>
@@ -197,9 +242,8 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
       <a class="c" href="https://github.com/somayvaidh" target="_blank" rel="noopener"><span>gh</span>GitHub ↗</a>
     </div>
     <div class="cta">
-      <a class="btn primary" href="#cases">View case studies</a>
+      <a class="btn primary" href="#cases">See the case studies</a>
       <a class="btn" href="Somay_Vaidh_Resume.pdf" download>Download resume (PDF)</a>
-      <a class="btn" href="https://www.linkedin.com/in/somay-vaidh-33b58b203/" target="_blank" rel="noopener">Message on LinkedIn</a>
     </div>
     <div class="toast" id="toast" aria-live="polite"></div>
   </div>
@@ -210,16 +254,14 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
       <span class="tag">The Souled Store</span>
     </div>
     <svg viewBox="0 0 320 150" role="img" aria-hidden="true">
-      <defs><linearGradient id="ar" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1d4ed8" stop-opacity=".14"/><stop offset="1" stop-color="#1d4ed8" stop-opacity="0"/></linearGradient>
-      <linearGradient id="ln" x1="0" x2="1"><stop offset="0" stop-color="#1d4ed8"/><stop offset="1" stop-color="#1d4ed8"/></linearGradient></defs>
-      <!-- y scale: 0% at y=130, 3.5% at y=10 (34.3px per 1%) -->
+      <defs><linearGradient id="ar" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#1d4ed8" stop-opacity=".14"/><stop offset="1" stop-color="#1d4ed8" stop-opacity="0"/></linearGradient></defs>
       <g stroke="#e4e7ec" stroke-width="1"><line x1="34" x2="312" y1="130" y2="130"/><line x1="34" x2="312" y1="95.7" y2="95.7"/><line x1="34" x2="312" y1="61.4" y2="61.4"/><line x1="34" x2="312" y1="27.1" y2="27.1"/></g>
-      <g fill="#667085" font-family="JetBrains Mono, monospace" font-size="9" text-anchor="end"><text x="28" y="133">0%</text><text x="28" y="98.7">1%</text><text x="28" y="64.4">2%</text><text x="28" y="30.1">3%</text></g>
+      <g fill="#667085" font-family="IBM Plex Mono, monospace" font-size="9" text-anchor="end"><text x="28" y="133">0%</text><text x="28" y="98.7">1%</text><text x="28" y="64.4">2%</text><text x="28" y="30.1">3%</text></g>
       <path d="M40 78.6 L310 31.9 L310 130 L40 130 Z" fill="url(#ar)"/>
-      <path d="M40 78.6 L310 31.9" stroke="url(#ln)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <path d="M40 78.6 L310 31.9" stroke="#1d4ed8" stroke-width="3" fill="none" stroke-linecap="round"/>
       <circle cx="40" cy="78.6" r="4.5" fill="#ffffff" stroke="#1d4ed8" stroke-width="2"/>
       <circle cx="310" cy="31.9" r="5.5" fill="#1d4ed8"/>
-      <g font-family="JetBrains Mono, monospace" font-size="10"><text x="46" y="96" fill="#475467">1.5%</text><text x="302" y="22" fill="#1d4ed8" text-anchor="end">~3%</text></g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10"><text x="46" y="96" fill="#475467">1.5%</text><text x="302" y="22" fill="#1d4ed8" text-anchor="end">~3%</text></g>
     </svg>
     <div class="ft"><span>Before</span><span>After store-level targeting</span></div>
     <div class="mini">
@@ -232,40 +274,29 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
 
 <div class="strip"><span class="k">Worked with</span><span class="co">The Souled Store</span><span class="co">Ola</span><span class="co">Snapwork</span><span class="co">Deutsche Bank</span><span class="co">Digii</span></div>
 
-<section id="about">
-  <div class="sh"><span class="eyebrow">About</span><h2>Analysis that ends in a decision.</h2></div>
-  <div class="about">
-    <div class="panel">
-      <p>I'm a business analyst with about two years of full-time experience across omnichannel retail, quick commerce and fintech.</p>
-      <p>At The Souled Store I was the analyst for Retail Operations across 80+ stores in 40+ cities. I set store targets, ran performance reviews, worked through the store P&amp;L, and built the analyses leadership used to decide where to push a category or fix a store.</p>
-      <p>Before that I launched a category on ONDC and built customer segmentation at Ola, and worked as a client-facing business analyst at Snapwork, turning an insurance client's needs into specs for two health apps and an HR portal.</p>
-      <p>I automate the repetitive parts of my work with SQL and Python, so more of my time goes into the question behind the dashboard.</p>
-    </div>
-    <div class="panel roles">
-      <h3>Roles I'm looking for</h3>
-      <div>Business Analyst / Senior BA</div>
-      <div>Data Analyst · retail, e-commerce, fintech</div>
-      <div>Product Analyst / Associate PM</div>
-      <div>Category, pricing &amp; commercial analytics</div>
-      <div>Strategy &amp; business operations</div>
-      <div>Analytics consulting</div>
-    </div>
-  </div>
-</section>
-
 <section id="results">
-  <div class="sh"><span class="eyebrow">Results</span><h2>Numbers I can point to.</h2></div>
+  <div class="sh"><span class="eyebrow">Performance you can measure</span><h2>Numbers first. Adjectives later.</h2></div>
   <div class="bento">
     <div class="tile wide"><div class="n"><span class="from">1.5% → </span><span class="grad">~3%</span></div><div class="l">Perfume share of store sales</div><div class="d">Customer and store deep-dive turned into store-level targets.</div><div class="w">The Souled Store</div></div>
     <div class="tile wide"><div class="n grad">+20%</div><div class="l">Repeat orders</div><div class="d">RFM segmentation across Food &amp; Grocery driving targeted interventions.</div><div class="w">Ola</div></div>
     <div class="tile"><div class="n">20+ hrs</div><div class="l">Saved every week</div><div class="d">15+ scheduled SQL and Python reports and alerts.</div><div class="w">The Souled Store</div></div>
     <div class="tile"><div class="n"><span class="from">3–4 days → </span>1 run</div><div class="l">Monthly target setting</div><div class="d">Automated phasing into daily, state-wise targets.</div><div class="w">The Souled Store</div></div>
-    <div class="tile"><div class="n">10–12</div><div class="l">Red-flag stores per cycle</div><div class="d">Looker Studio anomaly dashboard across 20–25 at-risk stores.</div><div class="w">The Souled Store</div></div>
+    <div class="tile"><div class="n">10–12</div><div class="l">Red-flag stores per cycle</div><div class="d">Weekly exception list plus a Looker Studio trend dashboard.</div><div class="w">The Souled Store</div></div>
+  </div>
+</section>
+
+<section id="day">
+  <div class="sh"><span class="eyebrow">A typical day</span><h2>Black coffee, then the numbers.</h2></div>
+  <div class="day">
+    <div class="dstep"><span class="dt">10:30 AM</span><b>Black coffee, yesterday's sales</b><p>First question of the day: which store dipped, and was it footfall, conversion or basket size?</p></div>
+    <div class="dstep"><span class="dt">12:30 PM</span><b>Chase the why</b><p>Stock-outs, a broken fixture, a staffing gap. The cause is usually on the floor, not in the dashboard.</p></div>
+    <div class="dstep"><span class="dt">4:00 PM</span><b>Talk to the people who fix it</b><p>A call with an area manager beats another chart. Agree the fix and who owns it.</p></div>
+    <div class="dstep"><span class="dt">8:00 PM →</span><b>Automate what hurt this morning</b><p>Most evenings run till 9 or 10. Whatever I checked by hand today becomes a scheduled report by Friday.</p></div>
   </div>
 </section>
 
 <section id="cases">
-  <div class="sh"><span class="eyebrow">Case studies</span><h2>How the work was done.</h2><p>Problem, approach and outcome for each. Click a card to open it. Company data stays private: no internal figures beyond the results above.</p></div>
+  <div class="sh"><span class="eyebrow">Case studies</span><h2>Every case starts with a question.</h2><p>Problem, approach and outcome for each. Click a card to open it. Company data stays private: no internal figures beyond the results above.</p></div>
   <div class="filters" role="toolbar" aria-label="Filter case studies">
     <button type="button" data-f="all" aria-pressed="true">All</button>
     <button type="button" data-f="tss" aria-pressed="false">The Souled Store</button>
@@ -345,6 +376,58 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
   </div>
 </section>
 
+<section id="beyond">
+  <div class="sh"><span class="eyebrow">More than an analyst</span><h2>Things I do when no one assigns them.</h2></div>
+  <div class="venture">
+    <div class="vtext">
+      <span class="vtag">Side project · in progress</span>
+      <h3>Vibe Finder</h3>
+      <p class="vline">Weekend plans, minus the Instagram DMs.</p>
+      <p>Small hosts run bowling nights, run clubs and solo trips through Instagram stories and spreadsheets. Vibe Finder gives them one place to publish a plan and lets people find and join it.</p>
+      <ul>
+        <li>Host dashboards to publish and manage plans</li>
+        <li>Per-plan control over what guests share (Instagram, WhatsApp and more)</li>
+        <li>Role-based admin access, with solo trips pan-India and weekend plans in Mumbai first</li>
+        <li>Pilot with independent trip organisers underway</li>
+      </ul>
+      <div class="tools"><span>Lovable</span><span>GitHub</span><span>Product design</span><span>Go-to-market</span></div>
+    </div>
+    <div class="vmock" aria-hidden="true">
+      <div class="vcard"><span class="vk">Sat · 7:00 AM</span><b>Bandra sea-face run club</b><span class="vm">Mumbai · 12 spots left</span><span class="vbtn">Join plan</span></div>
+      <div class="vcard"><span class="vk">3 nights</span><b>Solo trip: Gokarna</b><span class="vm">Hosted trip · Pan-India</span><span class="vbtn">Join plan</span></div>
+      <div class="vcard"><span class="vk">Fri · 8:30 PM</span><b>Bowling night</b><span class="vm">Mumbai · 6 spots left</span><span class="vbtn">Join plan</span></div>
+      <span class="vnote">Illustrative example plans</span>
+    </div>
+  </div>
+
+  <div class="ach">
+    <div class="acard"><span class="ak">On stage</span><b>Retail Champions host</b><p>Presented the monthly rewards &amp; recognition to The Souled Store's entire retail network.</p></div>
+    <div class="acard"><span class="ak">Founders' table</span><b>AI tools recommendation</b><p>Pilots and vendor comparison presented directly to the founders.</p></div>
+    <div class="acard"><span class="ak">Learning</span><b>National University of Singapore</b><p>Certificate programme.</p></div>
+    <div class="acard"><span class="ak">Learning</span><b>McKinsey.org Forward</b><p>Problem solving, communication and digital skills programme.</p></div>
+    <div class="acard"><span class="ak">In progress</span><b>CFA Level 1 Candidate</b><p>Because store P&amp;Ls led to wondering about every other P&amp;L.</p></div>
+    <div class="acard"><span class="ak">Certified</span><b>Microsoft Azure AI Fundamentals</b><p>Plus Financial Markets (Yale) and Supervised ML (Stanford).</p></div>
+  </div>
+</section>
+
+<section id="superpowers">
+  <div class="sh"><span class="eyebrow">Superpowers</span><h2>I speak fluent SQL, P&amp;L and store manager.</h2></div>
+  <div class="two">
+    <div class="panel"><h3 class="ph">Core craft: the day job</h3>
+      <div class="chips"><span>SQL · BigQuery · MySQL</span><span>Python automation</span><span>Advanced Excel</span><span>Looker Studio</span><span>Power BI · Tableau</span><span>Cohort &amp; RFM</span><span>LFL / YoY</span><span>P&amp;L analysis</span><span>Target setting</span><span>Forecasting</span><span>FSDs &amp; user journeys</span></div>
+    </div>
+    <div class="panel"><h3 class="ph">Secret weapons</h3>
+      <ul class="sw">
+        <li><b>Store-floor translation.</b> I can take a regression to a store manager and a footfall chart to a founder, and both get it.</li>
+        <li><b>Automate the boring bit.</b> If I do it twice by hand, the third time it's a script.</li>
+        <li><b>Root cause over reflex.</b> Before "run a campaign", I check whether the fixture is broken.</li>
+        <li><b>Builder brain.</b> Shipping a side product teaches you what a spec actually needs.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="kpi-row">Retail metrics I work in daily: <span>Conversion</span><span>AOV</span><span>UPT</span><span>ASP</span><span>Sell-through</span><span>Rev / footfall</span><span>LFL</span><span>Weeks of cover</span><span>Shrinkage</span></div>
+</section>
+
 <section id="experience">
   <div class="sh"><span class="eyebrow">Experience</span><h2>Where I've worked.</h2></div>
   <div class="tl">
@@ -359,40 +442,24 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
     <div class="job"><div><div class="co">Digii (CollPoll)</div><div class="t">Product Specialist</div><div class="when">Jan – Jun 2024</div><span class="intern">Internship</span></div>
       <ul><li>Onboarded university clients; automated question-paper generation in the exam module.</li></ul></div>
   </div>
+  <div class="edu"><b>B.Tech, Computer Science &amp; Engineering</b> · Vellore Institute of Technology · 2020 – 2024 · CGPA 7.18</div>
 </section>
 
-<section id="skills">
-  <div class="sh"><span class="eyebrow">Toolkit</span><h2>Skills.</h2></div>
-  <div class="skills">
-    <div class="panel"><h3>Data</h3><div class="chips"><span>SQL</span><span>BigQuery</span><span>MySQL</span><span>Hive / Presto</span><span>Python</span><span>pandas</span><span>Advanced Excel</span><span>Google Sheets</span></div></div>
-    <div class="panel"><h3>BI &amp; automation</h3><div class="chips"><span>Looker Studio</span><span>Power BI</span><span>Tableau</span><span>Python pipelines</span><span>Sheets &amp; Drive APIs</span><span>REST APIs</span></div></div>
-    <div class="panel"><h3>Business &amp; product</h3><div class="chips"><span>Cohort &amp; RFM</span><span>LFL / YoY</span><span>P&amp;L</span><span>Forecasting</span><span>Target setting</span><span>Root-cause analysis</span><span>FSDs</span><span>User journeys</span></div></div>
-  </div>
-  <div class="kpi-row">Retail metrics I work in daily: <span>Conversion</span><span>AOV</span><span>UPT</span><span>ASP</span><span>Sell-through</span><span>Rev / footfall</span><span>LFL</span><span>Weeks of cover</span><span>Shrinkage</span></div>
-</section>
-
-<section>
-  <div class="two">
-    <div class="panel"><div class="sh" style="margin-bottom:16px"><span class="eyebrow">Side projects</span></div>
-      <div class="list">
-        <div class="it"><b>Vibe Finder</b> <span class="yr">· in progress</span><p>A platform where hosts publish social plans and solo trips (run clubs, weekend activities, group trips) and people discover and join them. Host dashboards, per-plan guest requirements and admin roles. Built with Lovable and GitHub; pilot with small trip organisers next.</p></div>
-        <div class="it"><a href="https://github.com/somayvaidh/AI-Powered-Investment-Advisor-Chatbot" target="_blank" rel="noopener"><b>AI Investment Advisor Chatbot ↗</b></a><p>Stock recommendations from news sentiment (FinBERT) and live fundamentals.</p></div>
-        <div class="it"><a href="https://github.com/somayvaidh/Stock-Trading-AI-FINRL" target="_blank" rel="noopener"><b>RL Stock Trading Agent ↗</b></a><p>A2C portfolio agent backtested against mean-variance optimisation and the Dow Jones.</p></div>
-        <div class="it"><b>Real-time Violence Detection</b><p>Edge vision model with GPS-tagged Telegram alerts.</p></div>
-      </div></div>
-    <div class="panel"><div class="sh" style="margin-bottom:16px"><span class="eyebrow">Education</span></div>
-      <div class="list">
-        <div class="it"><b>B.Tech, Computer Science &amp; Engineering</b><p>Vellore Institute of Technology · CGPA 7.18</p><span class="yr">2020 – 2024</span></div>
-        <div class="it"><b>CFA Level 1 Candidate</b><p>CFA Institute</p></div>
-        <div class="it"><b>Certifications</b><p>Microsoft Azure AI Fundamentals · McKinsey.org Forward Program · Financial Markets (Yale) · Supervised ML (Stanford / DeepLearning.AI)</p></div>
-      </div></div>
+<section id="faq">
+  <div class="sh"><span class="eyebrow">FAQ</span><h2>Questions recruiters usually ask.</h2></div>
+  <div class="faq">
+    <details><summary>What roles are you looking for?</summary><p>Business Analyst, Data Analyst, Product Analyst or APM, category and pricing analytics, strategy &amp; business operations, and analytics consulting. Retail, e-commerce, quick commerce and fintech are home turf, but I'm happy in any sector with real decisions to make.</p></details>
+    <details><summary>When can you join, and where?</summary><p>Immediately. I'm based in Mumbai and open to relocating anywhere in India, or working hybrid or remote.</p></details>
+    <details><summary>You've moved roles a few times. Why?</summary><p>Each move was toward owning outcomes rather than deliverables: from client-facing BA work at Snapwork to in-house retail analytics, where I set the targets and saw the results. I'm now looking for a team to grow with for the long run.</p></details>
+    <details><summary>Are you more technical or more business?</summary><p>Both, on purpose. I write the SQL and Python myself, but the job isn't done until someone changes what they do because of it.</p></details>
+    <details><summary>What kind of team do you work best in?</summary><p>One that asks "why did this move?" before "what's the next dashboard?", and lets an analyst sit close to the people making the decision.</p></details>
   </div>
 </section>
 
 <div class="final" id="contact">
   <span class="eyebrow">Contact</span>
-  <h2>Hiring an analyst? <span class="grad">I can start now.</span></h2>
-  <p>Open to any city. Email or LinkedIn reaches me fastest.</p>
+  <h2>You bring the messy data. <span class="grad">I'll bring the decision.</span></h2>
+  <p>Open to any city and available now. Email or LinkedIn reaches me fastest.</p>
   <div class="contact">
     <button class="c" type="button" data-copy="somayvaidh08@gmail.com"><span>mail</span>somayvaidh08@gmail.com</button>
     <button class="c" type="button" data-copy="+91 98674 18956"><span>tel</span>+91 98674 18956</button>
@@ -401,7 +468,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
   <div class="toast" id="toast2" aria-live="polite"></div>
 </div>
 
-<footer><span>© 2026 Somay Vaidh · Mumbai</span><span>somayvaidh.vercel.app</span></footer>
+<footer><span>© 2026 Somay Vaidh · Mumbai</span><span>Somehow still checking the numbers twice.</span></footer>
 </main>
 
 <script>
