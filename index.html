@@ -236,12 +236,34 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
 .tile:nth-child(4){background:linear-gradient(160deg,#f3efff,#fff)}
 .tile:nth-child(5){background:linear-gradient(160deg,#fdf0f3,#fff)}
 .acard:nth-child(6n+1) .ak{color:#c2410c}.acard:nth-child(6n+2) .ak{color:#067647}.acard:nth-child(6n+3) .ak{color:#3538cd}.acard:nth-child(6n+4) .ak{color:#b54708}.acard:nth-child(6n+5) .ak{color:#c11574}
+.wgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+@media (max-width:1000px){.wgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (max-width:560px){.wgrid{grid-template-columns:1fr}}
+.ws{display:flex;flex-direction:column;gap:4px;border:1px solid var(--line);border-radius:16px;background:var(--card);padding:12px 12px 16px;color:var(--fg);box-shadow:0 1px 2px rgba(16,24,40,.04);transition:border-color .2s,box-shadow .2s}
+.ws:hover{text-decoration:none;border-color:#b2c6f5;box-shadow:0 10px 26px -14px rgba(29,78,216,.35)}
+.ws img{width:100%;aspect-ratio:1200/740;object-fit:cover;object-position:top left;border-radius:10px;border:1px solid var(--line);margin-bottom:8px;max-width:100%}
+.ws .wk{font:600 11px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--mint)}
+.ws b{font:700 16.5px var(--display)}
+.ws .wd{color:var(--muted);font-size:14px}
+.seefmt{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:13.5px;padding-top:4px}
+.seefmt span{font:600 11px var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.seefmt a{padding:4px 9px;border-radius:7px;background:var(--soft);font-weight:600}
+.decks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:18px}
+.deck{border:1px solid var(--line);border-radius:18px;background:var(--card);padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+.dhead{display:flex;flex-direction:column;gap:3px}.dhead .wk{font:600 11px var(--body);letter-spacing:.1em;text-transform:uppercase;color:var(--mint)}.dhead b{font:700 18px var(--display)}.dhead .wd{color:var(--muted);font-size:14px}
+.dview{position:relative;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#f2f4f7}
+.dview img{display:block;width:100%;aspect-ratio:1200/740;object-fit:cover;object-position:top left;cursor:zoom-in;transition:opacity .2s}
+.dnav{position:absolute;top:50%;transform:translateY(-50%);width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:rgba(255,255,255,.95);font:500 24px/1 var(--body);color:var(--fg);cursor:pointer;display:grid;place-items:center;box-shadow:0 2px 8px rgba(16,24,40,.15)}
+.dnav.prev{left:10px}.dnav.next{right:10px}.dnav:hover{border-color:var(--mint);color:var(--mint)}
+.dfoot{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.dcap{color:var(--muted);font-size:14px;min-height:2.6em}
+.dots{display:flex;gap:6px;flex:none}.dots button{width:9px;height:9px;border-radius:50%;border:0;background:var(--line2);cursor:pointer;padding:0}.dots button[aria-current="true"]{background:var(--mint);width:22px;border-radius:5px}
+@media (max-width:820px){.decks{grid-template-columns:1fr}}
 </style>
 </head><body>
 
 <nav aria-label="Main">
   <a class="brand" href="#top"><i></i>Somay Vaidh</a>
-  <div class="links"><a href="#day">My day</a><a href="#cases">Case studies</a><a href="#beyond">Beyond work</a><a href="#superpowers">Superpowers</a><a href="#experience">Experience</a><a href="#faq">FAQ</a></div>
+  <div class="links"><a href="#day">My day</a><a href="#cases">Case studies</a><a href="#work">Work samples</a><a href="#beyond">Beyond work</a><a href="#superpowers">Superpowers</a><a href="#experience">Experience</a><a href="#faq">FAQ</a></div>
   <span style="display:flex;gap:8px"><a class="btn" href="Somay_Vaidh_Resume.pdf" download>Resume</a><a class="btn primary" href="#contact">Let's talk</a></span>
 </nav>
 
@@ -330,43 +352,43 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
         <dt>Approach</dt><dd>Cohort retention over 24 months, split by channel; a SKU migration matrix; cannibalisation between two hero fragrances; cross-category retention; and a Good / Mid / Bad store segmentation by monthly sales share. Compared in-stock days with stock-out days per store to test whether perfume was driving extra sales or just substituting for other purchases.</dd>
         <dt>Outcome</dt><dd>Set a target of one perfume per staff member per day, which lifted perfumes sold per day (PDS) and with it the category's overall contribution. Ran monthly perfume training sessions for store staff and flagged under-performing stores for follow-up. Category share of sales rose from 1.5% to about 3%. Presented to founders and CXOs.</dd>
       </dl>
-      <div class="tools"><span>BigQuery</span><span>SQL</span><span>Python</span><span>Google Sheets</span></div></div></details>
+      <div class="tools"><span>BigQuery</span><span>SQL</span><span>Python</span><span>Google Sheets</span></div><div class="seefmt"><span>See the format:</span><a href="#deck-perfume">Perfume tracker walkthrough ↓</a></div></div></details>
     <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Planning</span><span class="res">3–4 days → 1 run</span></div><h3>Store targets that phase themselves</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Monthly store targets were split into daily targets by hand, which took 3–4 days every month and was easy to get wrong.</dd>
         <dt>Approach</dt><dd>Built a model that phases each store's monthly target into daily targets by state, weighting weekdays, weekends, public holidays and retail events, and writes the final store target file automatically.</dd>
         <dt>Outcome</dt><dd>A repeatable monthly run instead of 3–4 days of manual work, with consistent targets for every store.</dd>
       </dl>
-      <div class="tools"><span>Python</span><span>Excel</span><span>Google Sheets</span></div></div></details>
+      <div class="tools"><span>Python</span><span>Excel</span><span>Google Sheets</span></div><div class="seefmt"><span>See the format:</span><a href="#deck-targets">Target → daily phasing walkthrough ↓</a></div></div></details>
     <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Store health</span><span class="res">10–12 red flags / cycle</span></div><h3>Catching problem stores early</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Store issues such as stock gaps, poor audits or unusual returns were spotted late, one report at a time, and repeat offenders were hard to see.</dd>
         <dt>Approach</dt><dd>Built an alert system that reads replenishment, internal audit, mystery audit, perfume, returns and high-value-bill trackers, flags stores with repeated breakdowns across areas (not one-off slips), and emails Retail Ops a weekly prioritised exception list. Paired it with a Looker Studio trend dashboard, filterable by area manager and refreshed daily.</dd>
         <dt>Outcome</dt><dd>Each cycle it tracks 20–25 at-risk stores and flags 10–12 in red, giving Retail Ops one list of stores to act on.</dd>
       </dl>
-      <div class="tools"><span>BigQuery</span><span>SQL</span><span>Looker Studio</span></div></div></details>
+      <div class="tools"><span>BigQuery</span><span>SQL</span><span>Looker Studio</span></div><div class="seefmt"><span>See the format:</span><a href="work/looker-store-health.png" target="_blank" rel="noopener">Store Health Trends (Looker) ↗</a><a href="work/email-exception-list.png" target="_blank" rel="noopener">Weekly store health alert ↗</a></div></div></details>
     <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Evaluation</span><span class="res">2 pilots · 5 vendors</span></div><h3>Should we buy AI store-monitoring tools?</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>The founders were deciding whether to roll out AI store monitoring (video and microphone based) and which retail-tech vendor to use.</dd>
         <dt>Approach</dt><dd>Reviewed a 3-store AI video-analytics pilot across 8 use cases (unattended customers, queue time, staff presence, shelf and hygiene monitoring), measuring alerts, false alerts and accuracy per store. Ran a separate 3-store pilot of Storefox's microphone-based system, scoring staff conversations against a 24-point SOP rubric for the floor and billing counter. Compared retail-audit platforms Outmarch, Amply and Tactiqs side by side.</dd>
         <dt>Outcome</dt><dd>A recommendation deck for the founders, grounded in measured pilot accuracy rather than vendor claims.</dd>
       </dl>
-      <div class="tools"><span>Excel</span><span>PowerPoint</span></div></div></details>
+      <div class="tools"><span>Excel</span><span>PowerPoint</span></div><div class="seefmt"><span>See the format:</span><a href="work/slide-ai-pilot.png" target="_blank" rel="noopener">Pilot review slide ↗</a></div></div></details>
     <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Risk</span><span class="res">CXO framework</span></div><h3>Spotting returns abuse in stores</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Leadership suspected some customers were abusing in-store returns, but there was no consistent way to tell abuse from normal returns.</dd>
         <dt>Approach</dt><dd>Built user-level and order-level views of offline returns, then a flagging waterfall: low activity, high returner (50%+ return rate with 4+ items), watch list, and volume returner. Added cross-store return tracking, where items are bought in one store and returned in another.</dd>
         <dt>Outcome</dt><dd>A framework presented to the CXO team. Flagged customers were routed to Customer Experience for call-backs.</dd>
       </dl>
-      <div class="tools"><span>BigQuery</span><span>SQL</span><span>Excel</span></div></div></details>
+      <div class="tools"><span>BigQuery</span><span>SQL</span><span>Excel</span></div><div class="seefmt"><span>See the format:</span><a href="work/excel-returns-flags.png" target="_blank" rel="noopener">Returns-abuse flags ↗</a></div></div></details>
     <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Diagnosis</span><span class="res">100% → 43%</span></div><h3>Was it demand, or the store?</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>A franchise store's conversion fell sharply after an incident, and the question was whether customers had stopped coming or stopped buying.</dd>
         <dt>Approach</dt><dd>Compared footfall like-for-like against last year, then checked conversion, stock and fixture use section by section.</dd>
         <dt>Outcome</dt><dd>Footfall held up, but display use had fallen from 100% to 43% because of fixture damage. The fix was the fixtures, not marketing or staffing.</dd>
       </dl>
-      <div class="tools"><span>SQL</span><span>footfall camera data</span><span>Excel</span></div></div></details>
+      <div class="tools"><span>SQL</span><span>footfall camera data</span><span>Excel</span></div><div class="seefmt"><span>See the format:</span><a href="work/rbi-excel-export.png" target="_blank" rel="noopener">Business Review export (LFL & footfall) ↗</a></div></div></details>
     <details class="case" data-co="tss"><summary><div class="top"><span class="org">The Souled Store · Operations</span><span class="res">80+ stores</span></div><h3>Automating the mystery-shopper audit</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Each monthly mystery-shopper round had to be downloaded, reformatted and pasted into a scoring workbook by hand, and the vendor's format kept changing.</dd>
         <dt>Approach</dt><dd>Pulled each round straight from the audit vendor's API and mapped it to a fixed 23-question scorecard (first impression, assistance, trial room, cross-selling, checkout), reconciling questions the vendor had split or reworded.</dd>
         <dt>Outcome</dt><dd>One command per round, with store scorecards that always show the last three rounds.</dd>
       </dl>
-      <div class="tools"><span>Python</span><span>REST API</span><span>Excel</span></div></div></details>
+      <div class="tools"><span>Python</span><span>REST API</span><span>Excel</span></div><div class="seefmt"><span>See the format:</span><a href="work/sheet-mystery-audit.png" target="_blank" rel="noopener">Mystery audit summary ↗</a></div></div></details>
     <details class="case" data-co="ola"><summary><div class="top"><span class="org">Ola · Growth</span><span class="res">+20% repeat</span></div><h3>Bringing customers back across categories</h3><span class="tog" aria-hidden="true"></span></summary><div class="cbody"><dl>
         <dt>Problem</dt><dd>Food and Grocery needed to know which customers were worth re-engaging and how.</dd>
         <dt>Approach</dt><dd>Cohorts and a cross-category RFM segmentation (lifetime orders, AOV, frequency, recency) that split users into champions, at-risk and dormant. Added a reactivation analysis by last-order cohort to size win-back campaigns.</dd>
@@ -390,8 +412,45 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
         <dt>Approach</dt><dd>Scheduled Python pipelines from the sales and stock databases and the footfall API to Google Sheets and email: per-store stock several times a day, shrinkage ageing alerts, weeks of cover, weekly sell-through, hourly footfall and high-value bills.</dd>
         <dt>Outcome</dt><dd>Saved 20+ hours a week and moved reporting from weekly to daily.</dd>
       </dl>
-      <div class="tools"><span>Python</span><span>MySQL</span><span>BigQuery</span><span>Sheets API</span><span>Task Scheduler</span></div></div></details>
+      <div class="tools"><span>Python</span><span>MySQL</span><span>BigQuery</span><span>Sheets API</span><span>Task Scheduler</span></div><div class="seefmt"><span>See the format:</span><a href="#deck-wbr">Business Review app &amp; export ↓</a><a href="work/sheet-freshness.png" target="_blank" rel="noopener">Freshness report ↗</a><a href="work/sheet-new-repeat-exclusive.png" target="_blank" rel="noopener">New / repeat / exclusive ↗</a></div></div></details>
   </div>
+</section>
+
+<section id="work">
+  <div class="sh"><span class="eyebrow">Work samples</span><h2>What the outputs looked like.</h2><p>These are representative formats, recreated to showcase the work. Stores, names and numbers are made up; no company data is shown. Click any image to open it full size.</p></div>
+  <div class="decks">
+  <div class="deck" id="deck-targets" data-deck>
+    <div class="dhead"><span class="wk">Walkthrough · 3 steps</span><b>From monthly target to daily store targets</b><span class="wd">How the Retail Head's monthly targets become daily, state-wise targets for every store.</span></div>
+    <div class="dview"><img alt="" loading="lazy"><button class="dnav prev" type="button" aria-label="Previous slide">‹</button><button class="dnav next" type="button" aria-label="Next slide">›</button></div>
+    <div class="dfoot"><span class="dcap"></span><span class="dots"></span></div>
+    <script type="application/json">[
+      {"src":"work/targets-1-monthly-target.png","cap":"1 · Monthly target file: one number per store, set by the Retail Head (read-only input)."},
+      {"src":"work/targets-2-day-weights.png","cap":"2 · Day weights: weekday pattern from recent sales, uplifted for festivals, holidays and events like Black Friday."},
+      {"src":"work/targets-3-daily-phasing.png","cap":"3 · Phasing output: every store's month split into daily targets that add back to 100%."}]</script>
+  </div>
+  <div class="deck" id="deck-wbr" data-deck>
+    <div class="dhead"><span class="wk">Walkthrough · 3 views</span><b>Weekly Business Review app</b><span class="wd">Runs locally on base files, then exports the weekly review to Excel in one click.</span></div>
+    <div class="dview"><img alt="" loading="lazy"><button class="dnav prev" type="button" aria-label="Previous slide">‹</button><button class="dnav next" type="button" aria-label="Next slide">›</button></div>
+    <div class="dfoot"><span class="dcap"></span><span class="dots"></span></div>
+    <script type="application/json">[{"src": "work/rbi-app-localhost.png", "cap": "1 \u00b7 The app on localhost: base files loaded (sales, footfall, audits, freshness, 60\u201390 day ageing), filters for franchise, OPM and week."}, {"src": "work/rbi-excel-export.png", "cap": "2 \u00b7 Exported Business Review tab: targets, LFL, footfall, conversion, AOV, UPT, audits, replenishment, outward pending, cover and sell-through."}, {"src": "work/rbi-excel-audit-scores.png", "cap": "3 \u00b7 Audit Scores tab: QC sections across the last three rounds for every store."}]</script>
+  </div>
+  <div class="deck" id="deck-perfume" data-deck>
+    <div class="dhead"><span class="wk">Walkthrough · 5 time windows</span><b>Perfume tracker</b><span class="wd">The same store view for Sep, Oct, the last 7 days, yesterday and today, refreshed three times a day.</span></div>
+    <div class="dview"><img alt="" loading="lazy"><button class="dnav prev" type="button" aria-label="Previous slide">‹</button><button class="dnav next" type="button" aria-label="Next slide">›</button></div>
+    <div class="dfoot"><span class="dcap"></span><span class="dots"></span></div>
+    <script type="application/json">[{"src": "work/perfume-1-sep.png", "cap": "Sep-26 \u00b7 the baseline month: perfume sales, quantity, share of store sales and perfumes sold per day (PDS)."}, {"src": "work/perfume-2-oct.png", "cap": "Oct-26 \u00b7 the full month: which stores crossed the 3% share target and which stayed below 2.5%."}, {"src": "work/perfume-3-last7.png", "cap": "Last 7 days \u00b7 the weekly pulse used in reviews: who is moving towards the 3% share target."}, {"src": "work/perfume-4-yesterday.png", "cap": "Yesterday \u00b7 daily check of PDS against the one-perfume-per-staff-per-day target."}, {"src": "work/perfume-5-today.png", "cap": "Today \u00b7 intraday view from the latest refresh, to nudge stores before close."}]</script>
+  </div>
+  <div class="deck" id="deck-revenue" data-deck>
+    <div class="dhead"><span class="wk">Walkthrough · 3 views</span><b>Revenue Dashboard: store P&amp;L</b><span class="wd">Monthly plan vs cost, year-to-date store P&amp;L, and the COCO / FOFO network view.</span></div>
+    <div class="dview"><img alt="" loading="lazy"><button class="dnav prev" type="button" aria-label="Previous slide">‹</button><button class="dnav next" type="button" aria-label="Next slide">›</button></div>
+    <div class="dfoot"><span class="dcap"></span><span class="dots"></span></div>
+    <script type="application/json">[
+      {"src":"work/revenue-1-monthly-plan.png","cap":"1 · Monthly view: target-based plan, indexed for franchise margin, minus rent, opex and salary to an expected CM2 per store."},
+      {"src":"work/revenue-2-fy-pnl.png","cap":"2 · FY P&L: year-to-date revenue, LFL and CM2 by store, sorted to surface loss-making stores first."},
+      {"src":"work/revenue-3-network-summary.png","cap":"3 · Network summary: COCO vs FOFO achievement, cost ratios and CM2 month by month."}]</script>
+  </div>
+</div>
+  <div class="wgrid"><a class="ws" href="work/looker-store-health.png" target="_blank" rel="noopener"><img src="work/looker-store-health.png" alt="Store Health Trends (Looker Studio), recreated with sample data" loading="lazy"><span class="wk">Looker Studio</span><b>Store Health Trends</b><span class="wd">Weekly scores vs benchmark, status by OPM, problem stores called out</span></a><a class="ws" href="work/email-exception-list.png" target="_blank" rel="noopener"><img src="work/email-exception-list.png" alt="Store exception list (Weekly email), recreated with sample data" loading="lazy"><span class="wk">Weekly email</span><b>Weekly store health email</b><span class="wd">Red stores (3+ of 6 areas breaking), leadership summary, top 5 to act on</span></a><a class="ws" href="work/sheet-freshness.png" target="_blank" rel="noopener"><img src="work/sheet-freshness.png" alt="Freshness report (Google Sheets), recreated with sample data" loading="lazy"><span class="wk">Google Sheets</span><b>Freshness report</b><span class="wd">New designs under vs over 60 days, and 4-week freshness ratio by store</span></a><a class="ws" href="work/sheet-new-repeat-exclusive.png" target="_blank" rel="noopener"><img src="work/sheet-new-repeat-exclusive.png" alt="New, repeat & exclusive users (Google Sheets), recreated with sample data" loading="lazy"><span class="wk">Google Sheets</span><b>New, repeat & exclusive users</b><span class="wd">YTM and monthly new vs repeat and member vs non-member split by store</span></a><a class="ws" href="work/sheet-mystery-audit.png" target="_blank" rel="noopener"><img src="work/sheet-mystery-audit.png" alt="Mystery audit summary (Google Sheets), recreated with sample data" loading="lazy"><span class="wk">Google Sheets</span><b>Mystery audit summary</b><span class="wd">Scores by round and section-wise non-compliance, pulled via vendor API</span></a><a class="ws" href="work/excel-returns-flags.png" target="_blank" rel="noopener"><img src="work/excel-returns-flags.png" alt="Returns-abuse flags (Excel report), recreated with sample data" loading="lazy"><span class="wk">Excel report</span><b>Returns-abuse flags</b><span class="wd">Flag waterfall and flagged customers</span></a><a class="ws" href="work/slide-ai-pilot.png" target="_blank" rel="noopener"><img src="work/slide-ai-pilot.png" alt="AI monitoring pilot review (Founder deck), recreated with sample data" loading="lazy"><span class="wk">Founder deck</span><b>AI monitoring pilot review</b><span class="wd">Use-case accuracy and vendor comparison</span></a></div>
 </section>
 
 <section id="beyond">
@@ -423,7 +482,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
     <div class="acard"><span class="ak">Founders' table</span><b>AI tools recommendation</b><p>Pilots and vendor comparison presented directly to the founders.</p></div>
     <div class="acard"><span class="ak">Learning</span><b>National University of Singapore</b><p>Certificate programme.</p></div>
     <div class="acard"><span class="ak">Learning</span><b>McKinsey.org Forward</b><p>Problem solving, communication and digital skills programme.</p></div>
-    <div class="acard"><span class="ak">In progress</span><b>CFA Level 1 Candidate</b><p>Because store P&amp;Ls led to wondering about every other P&amp;L.</p></div>
+    
     <div class="acard"><span class="ak">Certified</span><b>Microsoft Azure AI Fundamentals</b><p>Plus Financial Markets (Yale) and Supervised ML (Stanford).</p></div>
   </div>
 </section>
@@ -450,7 +509,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
   <div class="sh"><span class="eyebrow">Experience</span><h2>Where I've worked.</h2></div>
   <div class="tl">
     <div class="job"><div><div class="co">The Souled Store</div><div class="t">Senior Associate Data Analyst, Business Analytics (Retail)</div><div class="when">May – Oct 2026</div><div class="x">Omnichannel apparel retail</div></div>
-      <ul><li>Analyst for Retail Operations across 80+ company-owned and franchise stores: monthly targets, performance reviews and store diagnostics.</li><li>Updated the Finance-owned Store MIS / P&amp;L and Revenue Dashboard; analysed margins, rent and salary costs to find where to cut costs and grow sales.</li><li>Ran the fortnightly franchise business review; presented the monthly Retail Champions awards.</li></ul></div>
+      <ul><li>Analyst for Retail Operations across 80+ company-owned and franchise stores: monthly targets, performance reviews and store diagnostics.</li><li>Updated the Finance-owned Store MIS / P&amp;L and Revenue Dashboard; analysed margins, rent and salary costs to find where to cut costs and grow sales. <a href="#deck-revenue">See the format ↓</a></li><li>Ran the fortnightly franchise business review; presented the monthly Retail Champions awards.</li></ul></div>
     <div class="job"><div><div class="co">Snapwork Technologies</div><div class="t">Business Analyst, Product</div><div class="when">Jun 2025 – May 2026</div><div class="x">Fintech services · Bajaj Finserv-invested</div></div>
       <ul><li>Lead BA for an insurance client: MediCard &amp; MedGo health apps and a corporate HR portal, requirements to launch.</li><li>Journey-design sessions with client and design team; functional specifications for engineering.</li><li>Product KPIs and dashboards; data model for a personal finance manager.</li></ul></div>
     <div class="job"><div><div class="co">Ola</div><div class="t">Program Manager &amp; Business Analyst</div><div class="when">Nov 2024 – Apr 2025</div><div class="x">Ride-hailing &amp; quick commerce</div></div>
@@ -506,7 +565,17 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;paddin
     fbtns.forEach(x=>x.setAttribute('aria-pressed',x===b?'true':'false'));
     document.querySelectorAll('#caseGrid .case').forEach(c=>{c.hidden=!(b.dataset.f==='all'||c.dataset.co===b.dataset.f);});
   }));
-  document.getElementById('openAll').addEventListener('click',()=>document.querySelectorAll('#caseGrid .case:not([hidden])').forEach(d=>d.open=true));
+  
+document.querySelectorAll('[data-deck]').forEach(d=>{
+  const sl=JSON.parse(d.querySelector('script[type="application/json"]').textContent),img=d.querySelector('.dview img'),cap=d.querySelector('.dcap'),dots=d.querySelector('.dots');let i=0;
+  sl.forEach((_,k)=>{const b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Slide '+(k+1));b.onclick=()=>show(k);dots.appendChild(b)});
+  function show(k){i=(k+sl.length)%sl.length;img.src=sl[i].src;img.alt=sl[i].cap+' (recreated with sample data)';cap.textContent=sl[i].cap;[...dots.children].forEach((b,j)=>b.setAttribute('aria-current',j===i))}
+  d.querySelector('.prev').onclick=()=>show(i-1);d.querySelector('.next').onclick=()=>show(i+1);
+  img.onclick=()=>window.open(sl[i].src,'_blank','noopener');
+  let x0=null;img.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});img.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)show(i+(dx<0?1:-1));x0=null});
+  show(0);
+});
+document.getElementById('openAll').addEventListener('click',()=>document.querySelectorAll('#caseGrid .case:not([hidden])').forEach(d=>d.open=true));
   document.getElementById('closeAll').addEventListener('click',()=>document.querySelectorAll('#caseGrid .case').forEach(d=>d.open=false));
 })();
 </script>
